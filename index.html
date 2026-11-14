@@ -1,0 +1,2038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q2Wk6 Study Guide &amp; Unit Test: From the Promised Land to the Davidic Covenant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Highlight styles matching the PDF study outline */
+        .study-content strong {
+            color: #f8fafc;
+            font-weight: 700;
+        }
+        .study-content em {
+            color: #93c5fd;
+            font-style: italic;
+        }
+        .study-content u,
+        .study-underline {
+            text-decoration: none;
+            background-color: rgba(245, 158, 11, 0.22);
+            color: #fde68a;
+            border-bottom: 2px solid #f59e0b;
+            padding: 0 3px;
+            border-radius: 3px;
+        }
+        /* Spotlight mode dims plain text so bold, italic, and underline pop */
+        .spotlight-mode .study-content li,
+        .spotlight-mode .study-content p {
+            color: #64748b;
+        }
+        /* 3D Flashcard Flip */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1);
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        /* Auto-hide entire top header bar; reveal smoothly on hover near top edge, focus-within, or pin */
+        #top-header-zone {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            height: 28px;
+            transition: height 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #top-header-zone:hover,
+        #top-header-zone:focus-within,
+        #top-header-zone.header-pinned {
+            height: auto;
+        }
+        #main-header {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.22s ease;
+        }
+        #top-header-zone:hover #main-header,
+        #top-header-zone:focus-within #main-header,
+        #top-header-zone.header-pinned #main-header {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        #header-hover-handle {
+            transition: opacity 0.22s ease, transform 0.22s ease;
+        }
+        #top-header-zone:hover #header-hover-handle,
+        #top-header-zone:focus-within #header-hover-handle,
+        #top-header-zone.header-pinned #header-hover-handle {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-8px);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-amber-500/30 selection:text-amber-200">
+
+    <!-- HOVER-REVEAL TOP BAR ZONE (FULL HEADER HIDES & SHOWS ON HOVER) -->
+    <div id="top-header-zone">
+        <!-- Subtle Top Edge Pill Handle When Header Is Hidden -->
+        <div id="header-hover-handle" onclick="toggleHeaderPin()" title="Hover top edge or click to open menu & student info bar" class="mx-auto w-fit cursor-pointer bg-slate-900/95 border-x border-b border-amber-500/40 text-amber-300 px-4 py-1 rounded-b-xl shadow-lg flex items-center gap-2 text-[11px] font-bold tracking-wide">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+            <span id="handle-tab-label">Q2Wk6 • 1. Study Outline</span>
+            <span class="text-slate-400 font-normal hidden sm:inline">• Hover top edge for Menu &amp; Name</span>
+            <span>&#9662;</span>
+        </div>
+
+        <!-- FULL TOP BAR: RESPONDENT IDENTITY & 4 NAVIGATION TABS -->
+        <header id="main-header" class="bg-slate-900/95 backdrop-blur border-b border-slate-800 shadow-2xl">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 space-y-2.5">
+                <!-- Top Row: Title & Respondent Inputs -->
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+                    <div class="flex items-start sm:items-center justify-between gap-2">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="inline-block text-[11px] font-bold uppercase tracking-widest text-amber-400">Q2Wk6 • Biblical Historical Survey</span>
+                                <span id="active-tab-pill" class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-800 text-amber-300 border border-slate-700">1. Study Outline</span>
+                            </div>
+                            <h1 class="text-base sm:text-lg font-extrabold text-slate-100 leading-tight">From the Promised Land to the Davidic Covenant</h1>
+                        </div>
+                        <button type="button" id="btn-pin-header" onclick="toggleHeaderPin()" title="Pin or Unpin Top Bar" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-[11px] font-semibold text-amber-300 shrink-0">
+                            Pin Bar
+                        </button>
+                    </div>
+
+                    <!-- Respondent Identity Bar -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 w-full lg:w-auto">
+                        <input id="student-name" type="text" placeholder="Full Name (Required)" oninput="saveRespondentInfo()" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-400" />
+                        <input id="student-email" type="email" placeholder="Student Email (Optional)" oninput="saveRespondentInfo()" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-400" />
+                        <input id="student-date" type="date" onchange="saveRespondentInfo()" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-100 focus:outline-none focus:border-amber-400" />
+                    </div>
+                </div>
+
+                <!-- Bottom Row: 3 Main Navigation Tabs -->
+                <nav class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-800/80" aria-label="Main Sections">
+                    <div class="flex flex-wrap gap-1.5 sm:gap-2">
+                        <button id="tab-outline" onclick="switchTab('outline')" class="tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition bg-amber-500 text-slate-950 shadow">
+                            1. Study Outline (17)
+                        </button>
+                        <button id="tab-flashcards" onclick="switchTab('flashcards')" class="tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-800 text-slate-300 hover:bg-slate-700">
+                            2. Flashcards (92)
+                        </button>
+                        <button id="tab-test" onclick="switchTab('test')" class="tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-800 text-slate-300 hover:bg-slate-700">
+                            3. Unit Test (255 Pts)
+                        </button>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button type="button" onclick="downloadStandaloneHTML()" class="px-3 py-1.5 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/40 text-emerald-300 text-xs font-bold transition">
+                            ⬇ Download index.html
+                        </button>
+                        <span class="hidden md:inline text-[11px] text-slate-400 italic">Move cursor away to auto-hide top bar</span>
+                    </div>
+                </nav>
+            </div>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 pt-9 pb-6">
+
+        <!-- =============================================================== -->
+        <!-- TAB 1: STUDY OUTLINE (WITH PDF BOLD, ITALIC, UNDERLINE HIGHLIGHTS) -->
+        <!-- =============================================================== -->
+        <div id="view-outline" class="space-y-5">
+            <!-- Legend, Search & Filter Bar -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div>
+                        <h2 class="text-lg sm:text-xl font-bold text-slate-100">Comprehensive Study Outline</h2>
+                        <p class="text-xs text-slate-400">Formatted directly from your PDF with key terms, Scripture quotes, and doctrinal highlights.</p>
+                    </div>
+                    <!-- Highlight Legend & Spotlight Toggle -->
+                    <div class="flex flex-wrap items-center gap-2 text-xs">
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800"><strong class="text-slate-100">Bold</strong> = Key Terms</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800"><em class="text-blue-300">Italic</em> = Quotes &amp; Hebrew</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800"><u class="study-underline">Underline</u> = Core Insight</span>
+                        <button id="btn-spotlight" onclick="toggleSpotlightMode()" class="px-3 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 font-semibold transition">
+                            ✨ Spotlight Highlights: OFF
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search & Topic Filter -->
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <input id="outline-search" type="text" placeholder="Search figures, places, verses, or keywords..." oninput="renderOutline()" class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-4 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-400" />
+                    <select id="outline-topic-filter" onchange="renderOutline()" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-amber-400">
+                        <option value="ALL">All 4 Topics (17 Sections)</option>
+                        <option value="I">Topic I: Journey to the Promised Land</option>
+                        <option value="II">Topic II: Battles for the Promised Land</option>
+                        <option value="III">Topic III: Periods of Turbulence (Judges)</option>
+                        <option value="IV">Topic IV: Samuel Anoints David</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Outline Cards Container -->
+            <div id="outline-container" class="space-y-4"></div>
+        </div>
+
+        <!-- =============================================================== -->
+        <!-- TAB 2: 92 INTERACTIVE FLASHCARDS                                -->
+        <!-- =============================================================== -->
+        <div id="view-flashcards" class="hidden space-y-5">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                        <h2 class="text-lg sm:text-xl font-bold text-slate-100">92 Interactive Study Flashcards</h2>
+                        <p class="text-xs text-slate-400">Click card or press <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200">Space</kbd> to flip • Use <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200">&larr;</kbd> <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200">&rarr;</kbd> arrow keys to navigate</p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <select id="fc-topic-filter" onchange="filterFlashcards()" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
+                            <option value="ALL">All Topics (92 Cards)</option>
+                            <option value="I">Topic I: Journey to Promised Land</option>
+                            <option value="II">Topic II: Battles for Promised Land</option>
+                            <option value="III">Topic III: Periods of Turbulence</option>
+                            <option value="IV">Topic IV: Davidic Covenant</option>
+                            <option value="UNMASTERED">Needs Review Only</option>
+                        </select>
+                        <button onclick="shuffleFlashcards()" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-slate-200 transition">Shuffle Deck</button>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="space-y-1.5">
+                    <div class="flex justify-between text-xs text-slate-400">
+                        <span id="fc-counter">Card 1 of 92</span>
+                        <span id="fc-mastered-count" class="text-emerald-400 font-semibold">Mastered: 0 / 92</span>
+                    </div>
+                    <div class="w-full h-2 bg-slate-950 rounded-full overflow-hidden">
+                        <div id="fc-progress-bar" class="h-full bg-amber-500 transition-all duration-300" style="width: 1%;"></div>
+                    </div>
+                </div>
+
+                <!-- 3D Flip Card -->
+                <div class="perspective-1000 max-w-3xl mx-auto my-4">
+                    <div id="fc-card-inner" onclick="flipFlashcard()" class="relative w-full min-h-[290px] sm:min-h-[330px] cursor-pointer transform-style-3d">
+                        <!-- Front -->
+                        <div class="backface-hidden absolute inset-0 bg-gradient-to-br from-slate-950 to-slate-900 border-2 border-slate-700 hover:border-amber-500/60 rounded-2xl p-6 sm:p-10 flex flex-col justify-between shadow-2xl">
+                            <div class="flex items-center justify-between">
+                                <span id="fc-topic-badge" class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">Topic I</span>
+                                <span id="fc-status-badge" class="text-xs font-semibold text-slate-400">Front • Prompt</span>
+                            </div>
+                            <div class="my-auto text-center px-2">
+                                <p id="fc-front-text" class="text-xl sm:text-2xl font-bold text-slate-100 leading-snug"></p>
+                            </div>
+                            <div class="text-center">
+                                <button type="button" onclick="event.stopPropagation(); toggleFlashcardHint()" class="text-xs text-amber-400 hover:text-amber-300 underline">Show / Hide Hint</button>
+                                <p id="fc-hint-text" class="hidden text-xs text-slate-400 italic mt-1.5"></p>
+                            </div>
+                        </div>
+
+                        <!-- Back -->
+                        <div class="backface-hidden rotate-y-180 absolute inset-0 bg-gradient-to-br from-amber-950/40 via-slate-900 to-slate-950 border-2 border-amber-500/60 rounded-2xl p-6 sm:p-10 flex flex-col justify-between shadow-2xl">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">Answer &amp; Insight</span>
+                                <span class="text-xs font-semibold text-slate-400">Click to flip back</span>
+                            </div>
+                            <div class="my-auto text-center px-2">
+                                <p id="fc-back-text" class="text-base sm:text-xl font-medium text-slate-100 leading-relaxed"></p>
+                            </div>
+                            <div class="text-center text-xs text-slate-400">Mark your mastery below</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flashcard Controls -->
+                <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+                    <button onclick="prevFlashcard()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs sm:text-sm transition">&larr; Previous</button>
+                    <button onclick="flipFlashcard()" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm transition">Flip Card</button>
+                    <button onclick="toggleMasteredCurrent()" id="btn-master-card" class="px-4 py-2.5 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/40 text-emerald-300 font-semibold text-xs sm:text-sm transition">Mark Mastered</button>
+                    <button onclick="nextFlashcard()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs sm:text-sm transition">Next &rarr;</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- =============================================================== -->
+        <!-- TAB 3: 255-POINT AUTO-GRADED UNIT TEST                          -->
+        <!-- =============================================================== -->
+        <div id="view-test" class="hidden space-y-6">
+            <!-- Sticky Test Action & Score Banner -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-xl">
+                <div>
+                    <h2 class="text-lg sm:text-xl font-bold text-slate-100">Q2Wk6 Unit Test: From the Promised Land to the Davidic Covenant</h2>
+                    <p class="text-xs text-slate-400 mt-0.5">17 Sections • 5 Matching + 5 Multiple Choice + 5 Fill-in-the-Blank per section = <strong class="text-amber-300">255 Points Total</strong></p>
+                    <p id="test-progress-text" class="text-xs font-semibold text-emerald-400 mt-1">Answered: 0 / 255 items</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2.5">
+                    <button onclick="gradeAllQuestions()" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-sm shadow-lg transition">
+                        Grade My Test
+                    </button>
+                    <button onclick="resetUnitTest()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 font-semibold text-sm transition">
+                        Reset Answers
+                    </button>
+                </div>
+            </div>
+
+            <!-- Score Result & Google Form Submission Card -->
+            <div id="test-results-panel" class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+                <div id="score-summary-box" class="hidden p-4 rounded-xl bg-slate-950 border border-amber-500/40 space-y-2">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <span class="text-sm font-bold text-amber-400 uppercase tracking-wider">Unit Test Score Report</span>
+                        <span id="final-score-badge" class="text-xl sm:text-2xl font-extrabold text-emerald-400">0 / 255 (0%)</span>
+                    </div>
+                    <p id="topic-breakdown-text" class="text-xs text-slate-300 leading-relaxed"></p>
+                </div>
+
+                <!-- Google Form Submission Box -->
+                <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 sm:p-5">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider">Google Form Pre-Filled Submission</h3>
+                                <span id="test-form-status-badge" class="inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Pre-Filled Link Ready
+                                </span>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-1" id="test-form-status-text">Hover the top edge to enter your Name, grade your test, and click below to open your pre-filled Google Form link and submit.</p>
+                        </div>
+                    </div>
+                    <div id="submit-status-box" class="hidden mb-3 p-3 rounded-lg text-xs font-medium"></div>
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <a id="btn-submit-gform" href="https://docs.google.com/forms/d/e/1FAIpQLSdsa9w43a54B98HH1uC5x4-Tx1LSd0Yg98wr2IdLG0lAAHHxA/viewform?usp=pp_url" target="_blank" rel="noopener" onclick="return handleGoogleFormLinkClick(event)" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-lg transition cursor-pointer">
+                            Submit Score to Google Form (Pre-Filled Link) &nearr;
+                        </a>
+                        <button type="button" onclick="copyPrefilledGoogleFormLink()" id="btn-copy-prefilled" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-semibold text-sm transition">
+                            Copy Pre-Filled Form Link
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- All 17 Test Sections Render Here -->
+            <div id="test-sections-container" class="space-y-6"></div>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 z-50 hidden max-w-sm bg-slate-900 border border-amber-500/50 text-slate-100 px-4 py-3 rounded-xl shadow-2xl text-xs font-medium"></div>
+
+    <script>
+        // =========================================================================
+        // PRE-BOUND GOOGLE FORM CONFIGURATION (HARDCODED DEFAULTS)
+        // =========================================================================
+        const DEFAULT_FORM_CONFIG = {
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLSdsa9w43a54B98HH1uC5x4-Tx1LSd0Yg98wr2IdLG0lAAHHxA/viewform?usp=pp_url',
+            viewformUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdsa9w43a54B98HH1uC5x4-Tx1LSd0Yg98wr2IdLG0lAAHHxA/viewform?usp=pp_url',
+            name: 'entry.835228018',
+            email: 'entry.897524592',
+            date: 'entry.1192112236',
+            score: 'entry.2006331865',
+            details: 'entry.1686881486'
+        };
+
+        // =========================================================================
+        // 1. COMPLETE STUDY OUTLINE DATA (TOPICS I-IV, SECTIONS 1-17)
+        // =========================================================================
+        const OUTLINE_DATA = [
+            {
+                id: 'I-1',
+                topic: 'I',
+                topicTitle: 'Topic I: Journey to the Promised Land (Book of Joshua)',
+                title: '1. The Transition of Leadership and Divine Commissioning (Joshua 1)',
+                figures: 'Joshua (son of Nun, tribe of Ephraim, formerly named Hoshea), Moses (deceased servant of the Lord), Transjordanian Tribes (Reuben, Gad, and the half-tribe of Manasseh).',
+                places: 'Plains of Moab (east of the Jordan River), The Jordan River (eastern border of Canaan), Euphrates River, Lebanon, and The Great Sea (Mediterranean Sea).',
+                bullets: [
+                    '<strong>Death of Moses (Joshua 1:1–2):</strong> Moses dies on <strong>Mount Nebo</strong> at age <strong>120</strong> without entering Canaan due to his <em>disobedience at Meribah (Numbers 20:12)</em>. The shift from Moses (<em>the lawgiver and liberator</em>) to Joshua (whose name <em>Yeshua</em> means <em>"Yahweh is salvation"</em>) signals the <u>transition from wilderness wandering to covenant inheritance</u>.',
+                    '<strong>The Divine Mandate (Joshua 1:2–4):</strong> God renews the territorial boundaries originally sworn to <strong>Abraham</strong> (<em>Genesis 15:18</em>). The land is already granted legally by divine decree, yet <u>Israel must actively step forward in faith</u> (<em>"every place that the sole of your foot will tread upon"</em>) to possess it practically.',
+                    '<strong>The Promise of Presence and Courage (Joshua 1:5–9):</strong> God commands Joshua <strong>four times</strong> to <em>"be strong and courageous."</em> Courage in the biblical worldview is not self-generated bravado; <u>it is the direct byproduct of God’s unbroken presence</u> (<em>"just as I was with Moses, so I will be with you"</em>).',
+                    '<strong>Commitment to the Torah (Joshua 1:7–8):</strong> Joshua is warned not to turn to the right or left from the <strong>Book of the Law</strong>. <u>Military success is subordinated to spiritual fidelity</u>—Joshua’s primary weapon is <strong>meditation on Scripture</strong>, not battlefield tactics.',
+                    '<strong>Mobilization of the Tribes (Joshua 1:10–18):</strong> Joshua enforces unity across all twelve tribes. Although <strong>Reuben, Gad, and half-Manasseh</strong> had already received fertile grazing land east of the Jordan (<em>Numbers 32</em>), they commit their fighting men to cross over as the <strong>vanguard</strong> until their brothers secure their western inheritances.'
+                ]
+            },
+            {
+                id: 'I-2',
+                topic: 'I',
+                topicTitle: 'Topic I: Journey to the Promised Land (Book of Joshua)',
+                title: '2. Reconnaissance of Jericho and Rahab’s Faith (Joshua 2)',
+                figures: 'Joshua, The Two Spies, Rahab (a Canaanite innkeeper/prostitute), The King of Jericho, Sihon and Og (defeated Amorite kings).',
+                places: 'Shittim (Israel’s final encampment east of the Jordan), Jericho (an ancient, heavily fortified oasis city guarding the central ascent into Canaan’s hill country), The Hill Country west of Jericho.',
+                bullets: [
+                    '<strong>Dispatch of the Two Spies (Joshua 2:1):</strong> Unlike Moses, who sent twelve spies publicly (resulting in ten bringing back an unbelieving report in <em>Numbers 13</em>), Joshua sends <strong>two spies secretly from Shittim</strong> <em>so that a negative report cannot demoralize the camp</em>.',
+                    '<strong>Sanctuary in Rahab’s House (Joshua 2:1–7):</strong> Built directly into <strong>Jericho’s outer defensive wall</strong>, Rahab’s house <u>provides an ideal vantage point and escape route</u>. She risks treason by hiding the spies under <strong>drying flax stalks</strong> on her flat roof and misdirecting the king’s soldiers toward the <strong>Jordan fords</strong>.',
+                    '<strong>Rahab’s Confession of Faith (Joshua 2:8–11):</strong> Rahab voices one of the purest confessions of <strong>monotheistic faith</strong> in the Old Testament: <em>"The Lord your God, he is God in the heavens above and on the earth beneath."</em> While Israel’s previous generation doubted God after seeing ten plagues, Rahab believes merely from hearing reports of the <strong>Red Sea crossing</strong> (40 years earlier) and the recent defeats of <strong>Sihon of Heshbon</strong> and <strong>Og of Bashan</strong>.',
+                    '<strong>The Scarlet Cord Covenant (Joshua 2:12–21):</strong> Rahab secures salvation (<em>hesed</em>—covenant kindness) for her entire family by hanging a <strong>scarlet cord</strong> from her window—<u>echoing the Passover blood on Israelite doorposts in Egypt</u> (<em>Exodus 12</em>). Rahab is later grafted into Israel, marries <strong>Salmon of Judah</strong>, and becomes an ancestor of <strong>King David and Jesus Christ</strong> (<em>Matthew 1:5; Hebrews 11:31</em>).',
+                    '<strong>Intelligence Report (Joshua 2:22–24):</strong> After hiding <strong>three days</strong> in the limestone caves west of Jericho, the spies report back using Rahab’s exact words: <em>"Truly the Lord has given all the land into our hands."</em>'
+                ]
+            },
+            {
+                id: 'I-3',
+                topic: 'I',
+                topicTitle: 'Topic I: Journey to the Promised Land (Book of Joshua)',
+                title: '3. The Miraculous Crossing of the Jordan River (Joshua 3–4)',
+                figures: 'Joshua, Levitical Priests (carrying the Ark), Twelve Tribal Representatives, The Generation of the Conquest.',
+                places: 'The Jordan River, Adam (a town ~16–20 miles upstream near Zarethan), Gilgal (first base camp inside Canaan).',
+                bullets: [
+                    '<strong>Sanctification of the People (Joshua 3:1–5):</strong> Before crossing, Israel undergoes <strong>ritual purification</strong> (washing clothes and abstaining from defilement, cf. <em>Exodus 19:10–15</em>). <u>Spiritual consecration always precedes divine intervention.</u>',
+                    '<strong>The Ark of the Covenant Leads (Joshua 3:3–4, 6):</strong> Keeping a respectful distance of <strong>2,000 cubits</strong> (~3,000 feet) ensures every tribe can clearly see the <strong>Ark</strong>—<em>the throne of God’s presence</em>—leading them into uncharted territory (<em>"you have not passed this way before"</em>).',
+                    '<strong>Parting of the Floodwaters (Joshua 3:14–17):</strong> God deliberately times the crossing during <strong>spring harvest (April/May)</strong>, when melting snow from <strong>Mount Hermon</strong> causes the Jordan to overflow its banks. Notably, the river does not part <u>until the priests step into the rushing water</u>—<em>demonstrating that faith requires stepping out before seeing the miracle</em>. The waters pile up at <strong>Adam</strong>, bookending the Exodus: God parted the Red Sea to bring Israel out of slavery, and parted the Jordan to bring them into inheritance.',
+                    '<strong>The Twelve Memorial Stones (Joshua 4:1–9, 19–24):</strong> Twelve men retrieve boulders from the dry riverbed where the priests stood and erect a monument at <strong>Gilgal</strong> (with a second pile placed inside the river itself). These stones serve as a <strong>catechism</strong> for future children asking, <em>"What do these stones mean?"</em>',
+                    '<strong>Exaltation of Joshua (Joshua 4:14):</strong> Just as the Red Sea validated Moses’ authority (<em>Exodus 14:31</em>), <u>the Jordan crossing irreversibly establishes Joshua’s leadership</u> before the entire nation.'
+                ]
+            },
+            {
+                id: 'I-4',
+                topic: 'I',
+                topicTitle: 'Topic I: Journey to the Promised Land (Book of Joshua)',
+                title: '4. Consecration at Gilgal (Joshua 5)',
+                figures: 'Joshua, The Uncircumcised Wilderness Generation, The Commander of the Lord’s Army (a pre-incarnate appearance of Christ / Christophany).',
+                places: 'Gilgal (meaning "rolling"), Gibeath-haaraloth ("Hill of Foreskins"), Plains of Jericho.',
+                bullets: [
+                    '<strong>Dread Among the Canaanites (Joshua 5:1):</strong> The Amorite kings of the hill country and Canaanite kings along the coast are <strong>psychologically paralyzed</strong>, creating a strategic window of vulnerability.',
+                    '<strong>Renewal of the Abrahamic Covenant (Joshua 5:2–9):</strong> From a purely military standpoint, circumcising every fighting male right outside enemy-held Jericho is tactical suicide (cf. <em>Genesis 34:25</em>). Yet spiritually, <u>Israel cannot fight covenant battles while neglecting the covenant sign</u>. God rolls away <em>"the reproach of Egypt"</em>—the taunt that God brought Israel out only to die in the desert.',
+                    '<strong>Celebration of Passover and Cessation of Manna (Joshua 5:10–12):</strong> Israel keeps its <strong>third recorded Passover</strong> (after Egypt and Sinai) on the <strong>14th of Nisan</strong>. The very next day, having eaten Canaan’s roasted grain, <strong>the daily miraculous manna stops permanently</strong>—signaling that Israel has graduated from <em>wilderness dependency</em> to <strong>settled stewardship</strong>.',
+                    '<strong>The Commander of the Lord’s Army (Joshua 5:13–15):</strong> While scouting Jericho, Joshua confronts a heavenly warrior with a drawn sword and asks, <em>"Are you for us, or for our adversaries?"</em> The Commander replies, <em>"Neither; but I am commander of the army of the Lord."</em> This pivotal insight reframes every battle: <u>God does not join human agendas; humans must align with God’s holiness.</u> Removing his sandals echoes Moses at the <strong>burning bush</strong> (<em>Exodus 3:5</em>), proving Canaan is now holy ground.'
+                ]
+            },
+            {
+                id: 'II-1',
+                topic: 'II',
+                topicTitle: 'Topic II: Battles for the Promised Land (Book of Joshua)',
+                title: '1. The Central Campaign: Jericho, Ai, and Gibeon (Joshua 6–9)',
+                figures: 'Joshua, Rahab, Achan (son of Carmi, tribe of Judah), King of Ai, The Gibeonites (Hivites).',
+                places: 'Jericho, Ai (east of Bethel), Valley of Achor ("Valley of Trouble"), Mount Ebal and Mount Gerizim (near Shechem), Gibeon.',
+                bullets: [
+                    '<strong>The Fall of Jericho (Joshua 6):</strong> By splitting Canaan cleanly through the central ridge, Joshua prevents northern and southern Canaanite kingdoms from uniting. Marching silently for six days and shouting on the seventh demonstrates that <u>Jericho falls by divine liturgy, not siege engines</u>. Jericho is placed under the ban (<em>herem</em>—devoted exclusively to God as the <em>"firstfruits"</em> of conquest). Joshua curses anyone who rebuilds its walls at the cost of his firstborn and youngest sons—a prophecy fulfilled centuries later by <strong>Hiel of Bethel</strong> under King Ahab (<em>1 Kings 16:34</em>).',
+                    '<strong>Sin at Ai and Covenant Renewal (Joshua 7–8):</strong> Overconfident after Jericho, Israel sends only <strong>3,000 troops</strong> against small <strong>Ai</strong> and flees in rout, losing <strong>36 men</strong>. <strong>Achan’s</strong> hidden theft of a <em>Shinar (Babylonian) robe, 200 shekels of silver, and a 50-shekel gold bar</em> brings corporate guilt on the nation. After Achan is judged in the <strong>Valley of Achor</strong> (later transformed into a <em>"door of hope"</em> in <em>Hosea 2:15</em>), Joshua uses a brilliant <strong>night ambush</strong> to conquer Ai. Afterward, Joshua leads Israel 20 miles north into unconquered territory to <strong>Mount Ebal and Mount Gerizim</strong> (<em>Deuteronomy 27</em>) to publicly read the Law—<u>demonstrating that worship takes priority over military momentum</u>.',
+                    '<strong>The Gibeonite Deception (Joshua 9):</strong> Alarmed by Israel’s victories, the four Hivite cities (<strong>Gibeon, Chephirah, Beeroth, Kiriath-jearim</strong>) stage an elaborate ruse with <em>moldy bread and patched wineskins</em>. Israel’s leaders fall into a classic trap: they evaluate visible evidence (<em>"sampled their provisions"</em>) but <u>"did not ask counsel from the Lord"</u> (<em>Joshua 9:14</em>). Because oaths sworn in Yahweh’s name are inviolable (even when obtained by fraud), Israel spares them as perpetual temple servants—a covenant so binding that God later sends a <strong>three-year famine</strong> when King Saul violates it (<em>2 Samuel 21:1</em>).'
+                ]
+            },
+            {
+                id: 'II-2',
+                topic: 'II',
+                topicTitle: 'Topic II: Battles for the Promised Land (Book of Joshua)',
+                title: '2. The Southern Campaign: The Amorite Coalition (Joshua 10)',
+                figures: 'Joshua, Adoni-zedek (King of Jerusalem), Hoham (King of Hebron), Piram (King of Jarmuth), Japhia (King of Lachish), Debir (King of Eglon).',
+                places: 'Gibeon, Ascent of Beth-horon, Azekah, Makkedah, Valley of Aijalon, Libnah, Lachish, Gezer, Eglon, Hebron, Debir.',
+                bullets: [
+                    '<strong>Defense of Gibeon (Joshua 10:1–6):</strong> Gibeon was a major royal city controlling key mountain passes. When <strong>five Amorite kings</strong> besiege Gibeon to punish its alliance with Israel, Joshua honors Israel’s covenant obligations by executing a grueling <strong>25-mile uphill forced march overnight</strong> from Gilgal.',
+                    '<strong>The Long Day at Beth-horon (Joshua 10:7–15):</strong> God throws the coalition into panic and rains <strong>lethal hailstones</strong> down the steep <strong>Beth-horon pass</strong>. To prevent the fleeing armies from regrouping in fortified cities under cover of darkness, Joshua prays aloud for the <strong>sun and moon to stand still</strong>—humbling Canaanite astral deities (like <em>Shemesh</em>, the sun god) by <u>showing Yahweh commands the cosmos for His people</u>.',
+                    '<strong>Subjugation of the South (Joshua 10:16–43):</strong> Joshua traps the five kings in a cave at <strong>Makkedah</strong>, has his commanders <strong>place their feet on the kings’ necks</strong> as a prophetic symbol of total dominion, and sweeps through the southern fortress cities in a rapid blitzkrieg before returning to Gilgal.'
+                ]
+            },
+            {
+                id: 'II-3',
+                topic: 'II',
+                topicTitle: 'Topic II: Battles for the Promised Land (Book of Joshua)',
+                title: '3. The Northern Campaign: The Waters of Merom (Joshua 11–12)',
+                figures: 'Joshua, Jabin (King of Hazor), Jobab (King of Madon), and northern kings from Shimron and Achshaph.',
+                places: 'Waters of Merom (in Upper Galilee), Hazor (the largest fortified city in Canaan, ~200 acres), Great Sidon, Misrephoth-maim, Valley of Mizpeh.',
+                bullets: [
+                    '<strong>Jabin’s Massive Confederacy (Joshua 11:1–5):</strong> Facing Israel’s advance, <strong>King Jabin of Hazor</strong> assembles the largest coalition yet, deploying <strong>iron-clad chariots and cavalry</strong> on the northern plains—military technology Israel completely lacked.',
+                    '<strong>Surprise Attack and Destruction of Hazor (Joshua 11:6–15):</strong> God commands Joshua to <strong>hamstring the horses and burn the chariots</strong> <u>so Israel never trusts in military hardware rather than Yahweh</u> (cf. <em>Psalm 20:7</em>). Joshua strikes suddenly at the <strong>Waters of Merom</strong> before the chariots can deploy in open formation, and <strong>burns only Hazor</strong> among the mound-cities so Israel can inhabit the remaining cities intact (<em>Deuteronomy 6:10–11</em>).',
+                    '<strong>Summary of Conquest (Joshua 11:16–23; 12:1–24):</strong> Over roughly <strong>seven years</strong> of campaigning, Joshua breaks the back of organized Canaanite resistance, defeating <strong>31 kings</strong>, though individual tribes remain responsible for clearing remaining localized pockets.'
+                ]
+            },
+            {
+                id: 'II-4',
+                topic: 'II',
+                topicTitle: 'Topic II: Battles for the Promised Land (Book of Joshua)',
+                title: '4. Allotment of the Land and Covenant Farewell (Joshua 13–24)',
+                figures: 'Joshua, Eleazar the Priest, Caleb (son of Jephunneh, tribe of Judah), Daughters of Zelophehad, Phinehas (son of Eleazar).',
+                places: 'Shiloh (where the Tabernacle is permanently erected, Joshua 18:1), Hebron/Kiriath-arba, Six Cities of Refuge (Kedesh, Shechem, Hebron, Bezer, Ramoth, Golan), Shechem.',
+                bullets: [
+                    '<strong>Tribal Inheritances (Joshua 13–21):</strong> Land is distributed by <strong>sacred lot before the Tabernacle at Shiloh</strong> so no tribe can accuse Joshua of favoritism. At age <strong>85</strong>, <strong>Caleb</strong> claims <strong>Hebron</strong>—the exact mountain inhabited by the giant <em>Anakim</em> that terrified ten spies 45 years earlier (<em>Joshua 14:6–15</em>). Meanwhile, the <strong>tribe of Levi</strong> receives no contiguous region; scattered across <strong>48 cities</strong>, <u>they serve as spiritual salt preserving covenant literacy nationwide</u>.',
+                    '<strong>Covenant Renewal at Shechem (Joshua 23–24):</strong> At <strong>Shechem</strong>—the very site where God first promised Canaan to Abraham (<em>Genesis 12:6–7</em>)—an aging Joshua warns Israel that intermarriage and idolatry will trigger exile. He challenges them to deliberate decision (<em>"Choose this day whom you will serve"</em>) and erects a <strong>massive stone under the sanctuary oak</strong> as an enduring legal witness before dying at age <strong>110</strong>.'
+                ]
+            },
+            {
+                id: 'III-1',
+                topic: 'III',
+                topicTitle: 'Topic III: Israelites: The Periods of Turbulence (Judges & Early Prophets)',
+                title: '1. The Root Causes of Turbulence (Judges 1–2)',
+                figures: 'Judah and Simeon, The Angel of the Lord, The Post-Joshua Generation.',
+                places: 'Bezek, Jerusalem, Gaza, Ashkelon, Ekron, Bochim ("Weepers").',
+                bullets: [
+                    '<strong>Incomplete Obedience (Judges 1:19–36):</strong> Rather than driving out the Canaanites as commanded, tribe after tribe compromises citing <em>iron chariots</em> or preferring the economic convenience of taxing Canaanite forced labor. <u>Tolerance of partial obedience plants the seeds of cultural assimilation.</u>',
+                    '<strong>The Angel of the Lord at Bochim (Judges 2:1–5):</strong> The Angel of the Lord ascends from Gilgal to <strong>Bochim</strong> to indict Israel for breaking covenant; the people weep and offer sacrifices, yet <u>fail to tear down the pagan altars</u>.',
+                    '<strong>Generational Apostasy (Judges 2:7–13):</strong> Failure to pass down historical memory causes an entire generation to grow up ignorant of Yahweh’s saving deeds, turning instead to <strong>Baal</strong> (<em>storm/fertility god</em>) and <strong>Ashtaroth</strong> (<em>goddess of war and fertility</em>) to secure agricultural prosperity.'
+                ]
+            },
+            {
+                id: 'III-2',
+                topic: 'III',
+                topicTitle: 'Topic III: Israelites: The Periods of Turbulence (Judges & Early Prophets)',
+                title: '2. The Recurring Cycle of Sin and Deliverance (Judges 2:11–23)',
+                figures: 'The Rebellious Tribes, Foreign Oppressors, Yahweh, Charismatic Judges (Shophetim).',
+                places: 'Throughout the Tribal Territories of Canaan.',
+                bullets: [
+                    '<strong>The Downward Spiral ("Canaanization"):</strong> Spanning roughly <strong>300–350 years</strong>, the Book of Judges is not merely cyclical—<u>it is a downward spiral</u>. Each successive judge becomes more flawed, tribal unity fractures into civil war, and the closing refrain—<em>"In those days there was no king in Israel. Everyone did what was right in his own eyes"</em> (<em>Judges 21:25</em>)—builds the biblical argument for a <strong>righteous Davidic king</strong>.',
+                    '<strong>1. Rebellion:</strong> Israel abandons Yahweh for Canaanite idols (<strong>Baal and Ashtaroth</strong>).',
+                    '<strong>2. Retribution:</strong> God lifts His protective hand, handing Israel over to foreign raiders.',
+                    '<strong>3. Repentance:</strong> Oppression forces Israel to cry out for relief (<em>often out of pain rather than genuine heart transformation</em>).',
+                    '<strong>4. Restoration:</strong> God raises a charismatic Judge (<em>Shophet</em>—a military-civil deliverer) by His Spirit to rescue them.'
+                ]
+            },
+            {
+                id: 'III-3',
+                topic: 'III',
+                topicTitle: 'Topic III: Israelites: The Periods of Turbulence (Judges & Early Prophets)',
+                title: '3. Major Judges and Deliverers (Judges 3–16)',
+                figures: 'Othniel, Ehud, Deborah & Barak, Jael, Gideon (Jerubbaal), Abimelech, Jephthah, Samson.',
+                places: 'Jericho, Jordan Fords, Mt. Tabor, Kishon River, Ophrah, Jezreel Valley, Shechem, Thebez, Mizpah, Gaza, Valley of Sorek.',
+                bullets: [
+                    '<strong>Othniel (Judges 3:7–11):</strong> Caleb’s nephew from Judah defeats <strong>Cushan-rishathaim</strong> of Mesopotamia. Represents the <u>gold standard of judges</u>—Spirit-empowered, faithful, and unblemished, securing <strong>40 years</strong> of peace.',
+                    '<strong>Ehud (Judges 3:12–30):</strong> Left-handed Benjamite who conceals an <strong>18-inch blade on his right thigh</strong> (bypassing standard left-hip searches), assassinates <strong>King Eglon of Moab</strong>, and slaughters 10,000 Moabites—securing <strong>80 years</strong> of rest.',
+                    '<strong>Deborah & Barak (Judges 4–5):</strong> Deborah serves as <strong>prophetess and judge</strong>. God sends a <strong>flash flood</strong> that bogs down General Sisera’s <strong>900 iron chariots</strong> in the Kishon River mud, and <strong>Jael</strong> kills the fleeing general with a <strong>tent peg</strong>.',
+                    '<strong>Gideon (Judges 6–8):</strong> God trims Gideon’s army from 32,000 to <strong>300 men</strong> with <em>clay jars, torches, and trumpets</em>, routing <strong>135,000 Midianites</strong>. Tragically, Gideon finishes poorly: he refuses kingship in word yet acts like a king, fashioning a <strong>golden ephod in Ophrah</strong> that becomes an object of idolatry.',
+                    '<strong>Abimelech (Judges 9):</strong> The <em>"anti-judge"</em>—Gideon’s son murders <strong>70 half-brothers</strong> to seize power at Shechem, triggering civil war until a woman drops an <strong>upper millstone</strong> on his skull at <strong>Thebez</strong>.',
+                    '<strong>Jephthah (Judges 10:6–12:7):</strong> Gileadite outcast who defeats Ammon, but his <strong>rash pagan-style vow</strong> costs his only daughter and sparks civil war where 42,000 Ephraimites die over the pronunciation of <em>"Shibboleth."</em>',
+                    '<strong>Samson (Judges 13–16):</strong> <strong>Nazirite from birth</strong> with Spirit-given strength, yet compromised by sensual impulsiveness and Delilah. Blinded in <strong>Gaza</strong>, he achieves his greatest victory in death by collapsing <strong>Dagon’s temple</strong>.'
+                ]
+            },
+            {
+                id: 'III-4',
+                topic: 'III',
+                topicTitle: 'Topic III: Israelites: The Periods of Turbulence (Judges & Early Prophets)',
+                title: '4. Moral Collapse and Tribal Civil War (Judges 17–21)',
+                figures: 'Micah (an Ephraimite), Jonathan (grandson of Moses, a rogue Levite), The Tribe of Dan, A Levite and his Concubine, Men of Gibeah (tribe of Benjamin).',
+                places: 'Hill Country of Ephraim, Laish/Dan (northernmost tip of Israel), Bethlehem, Gibeah, Mizpah, Jabesh-gilead, Shiloh.',
+                bullets: [
+                    '<strong>Idolatry of Micah and the Danites (Judges 17–18):</strong> Reveals <strong>spiritual corruption</strong>: Micah’s mother uses silver dedicated to "Yahweh" to cast a graven idol, Micah ordains his own son and later hires <strong>Moses’ grandson (Jonathan)</strong> as a private priest, and the <strong>tribe of Dan</strong> steals the idols to set up an unauthorized sanctuary at <strong>Laish/Dan</strong> in the north.',
+                    '<strong>The Atrocity at Gibeah and Civil War (Judges 19–21):</strong> Reveals <strong>moral and social collapse</strong>: Benjamite men of <strong>Gibeah</strong> replicate the <em>sin of Sodom (Genesis 19)</em> against a Levite’s concubine. When Benjamin refuses to surrender the perpetrators, the other eleven tribes wage civil war, reducing Benjamin to <strong>600 surviving men</strong>—<u>demonstrating that without godly leadership, Israel behaves worse than the Canaanites they displaced</u>.'
+                ]
+            },
+            {
+                id: 'III-5',
+                topic: 'III',
+                topicTitle: 'Topic III: Israelites: The Periods of Turbulence (Judges & Early Prophets)',
+                title: '5. Transition Through the Prophetic Ministry of Samuel (1 Samuel 1–7)',
+                figures: 'Elkanah and Hannah, Eli (High Priest) and his wicked sons Hophni and Phinehas, Samuel (last judge and first major prophet).',
+                places: 'Ramah, Shiloh (Tabernacle site), Aphek and Ebenezer, Ashdod, Gath, Ekron (Philistine cities), Kiriath-jearim, Mizpah.',
+                bullets: [
+                    '<strong>Corruption of Eli’s Priesthood (1 Samuel 2–4):</strong> <strong>Hophni and Phinehas</strong> treat God’s sacrifices with contempt and commit immorality at the Tabernacle entrance. When Israel treats the <strong>Ark of the Covenant</strong> like a <em>magical good-luck charm</em> in battle against the Philistines at <strong>Aphek</strong>, God allows the Ark to be captured and <strong>Shiloh</strong> to be destroyed—<u>proving God will not be manipulated by ritual without righteousness</u>.',
+                    '<strong>Rise of Samuel as Prophet and Judge (1 Samuel 1; 3; 7):</strong> Born in answer to <strong>Hannah’s</strong> tearful prayer, Samuel grows up serving at Shiloh, receives his prophetic call as a youth, and leads a <strong>20-year spiritual revival</strong> culminating at <strong>Mizpah</strong>. When Israel repents and puts away foreign gods, God thunders against the attacking Philistines, and Samuel erects a memorial stone named <strong>Ebenezer</strong> (<em>"Till now the Lord has helped us"</em>).'
+                ]
+            },
+            {
+                id: 'IV-1',
+                topic: 'IV',
+                topicTitle: 'Topic IV: The Call to Greater Promises (Samuel Anoints David)',
+                title: '1. Israel’s Demand for a King and the Rise and Fall of Saul (1 Samuel 8–15)',
+                figures: 'Samuel, Joel and Abijah (Samuel’s corrupt sons), Saul (son of Kish, tribe of Benjamin), Nahash the Ammonite, King Agag of Amalek.',
+                places: 'Ramah, Mizpah, Jabesh-gilead, Gilgal, Michmash, Telaim.',
+                bullets: [
+                    '<strong>Rejection of God’s Kingship (1 Samuel 8):</strong> Although <em>Deuteronomy 17:14–20</em> anticipated a future king, Israel’s demand is rooted in <strong>unbelief</strong>—wanting a visible warrior-king <em>"like all the nations"</em> rather than trusting Yahweh’s covenant protection. Samuel warns that a human monarch will tax their crops and draft their children, yet God grants their request to expose the folly of misplaced trust.',
+                    '<strong>Saul’s Anointing and Early Promise (1 Samuel 9–11):</strong> Looking for lost donkeys, <strong>Saul</strong> meets Samuel, is privately anointed, and proves his valor by rallying 330,000 Israelites to rescue <strong>Jabesh-gilead</strong> from <strong>King Nahash</strong>.',
+                    '<strong>Saul’s Spiritual Disqualification (1 Samuel 13; 15):</strong> Outwardly imposing (<em>"taller than any of the people from his shoulders upward"</em>), Saul lacks inward faith. At <strong>Gilgal</strong>, panicking as his troops scatter before the Philistines, Saul <strong>usurps the priestly role</strong> by offering the burnt sacrifice himself (<em>1 Samuel 13:8–14</em>). Later, commanded to destroy Amalek completely, Saul spares <strong>King Agag</strong> and prime livestock, blaming the troops and rationalizing his disobedience as religious sacrifice—prompting Samuel’s timeless rebuke: <u>"To obey is better than sacrifice"</u> (<em>1 Samuel 15:22</em>).'
+                ]
+            },
+            {
+                id: 'IV-2',
+                topic: 'IV',
+                topicTitle: 'Topic IV: The Call to Greater Promises (Samuel Anoints David)',
+                title: '2. The Secret Anointing of David at Bethlehem (1 Samuel 16)',
+                figures: 'Samuel, Jesse of Bethlehem (grandson of Ruth and Boaz), Eliab, Abinadab, Shammah (Jesse’s older sons), David (youngest of eight sons).',
+                places: 'Ramah (Samuel’s home) and Bethlehem ("House of Bread").',
+                bullets: [
+                    '<strong>Divine Direction to Jesse’s House (1 Samuel 16:1–5):</strong> Mourning Saul’s failure, Samuel is sent to <strong>Bethlehem</strong> under the cover of a <strong>sacrificial feast</strong> to avoid triggering Saul’s lethal paranoia.',
+                    '<strong>God’s Criterion of the Heart (1 Samuel 16:6–7):</strong> Impressed by the tall, regal appearance of Jesse’s firstborn <strong>Eliab</strong>, Samuel assumes he is looking at the next king—repeating the exact error Israel made with Saul. God intervenes with a foundational theological principle: <u>"Man looks on the outward appearance, but the Lord looks on the heart."</u>',
+                    '<strong>Passing Over Seven Sons (1 Samuel 16:8–10):</strong> <strong>Seven sons</strong> pass before Samuel; each is rejected, signaling that <u>human primogeniture (birth order) and status do not govern divine election</u>.',
+                    '<strong>Anointing the Shepherd Boy (1 Samuel 16:11–14):</strong> <strong>David</strong> is so overlooked by his own family that Jesse does not even invite him to the sacrificial meal, leaving him tending sheep. Summoned from the fields, David is anointed in the presence of his brothers. Immediately, <em>"the Spirit of the Lord rushed upon David from that day forward,"</em> equipping him for royal leadership, while the Spirit departs from Saul.'
+                ]
+            },
+            {
+                id: 'IV-3',
+                topic: 'IV',
+                topicTitle: 'Topic IV: The Call to Greater Promises (Samuel Anoints David)',
+                title: '3. Emergence of the Anointed King: Giants, Exile, and Crown (1 Samuel 17 – 2 Samuel 6)',
+                figures: 'David, Goliath of Gath, Saul, Jonathan (Saul’s son and heir), Abigail, Abner (Saul’s general), Joab (David’s commander).',
+                places: 'Valley of Elah, Nob, Cave of Adullam, En-gedi, Hill of Hachilah, Ziklag, Mount Gilboa, Hebron, Jerusalem (City of David).',
+                bullets: [
+                    '<strong>Vindication in the Valley of Elah (1 Samuel 17):</strong> While Saul—the tallest man in Israel—cowers in his tent, David confronts the <strong>9-foot-9 Philistine champion Goliath</strong>. Refusing Saul’s heavy bronze armor, David fights with shepherd tools (<em>sling and pebble</em>) and theological certainty, declaring that Goliath has defied <em>"the armies of the living God"</em>—<u>proving his heart beats for God’s glory before public acclaim</u>.',
+                    '<strong>Wilderness Refinement and Covenant Friendship (1 Samuel 18–31):</strong> Rather than seizing power by force after his anointing, David endures roughly a <strong>decade of unjust exile</strong> hunted by Saul. In the wilderness, God shapes David from a shepherd boy into a compassionate leader of <strong>600 marginalized men</strong>, supported by <strong>Jonathan</strong>, who willingly surrenders his own claim to the throne out of covenant love for David. Twice (at <strong>En-gedi</strong> and <strong>Hachilah</strong>) David spares Saul’s life, <u>refusing to grasp by sin what God promised by grace</u>.',
+                    '<strong>Ascension to the Throne (2 Samuel 1–6):</strong> After Saul and Jonathan die fighting the Philistines on <strong>Mount Gilboa</strong>, Judah anoints David king at <strong>Hebron</strong> (reigning <strong>7.5 years</strong>), followed by all twelve tribes uniting under him. David captures the Jebusite stronghold of <strong>Jerusalem</strong>—<em>a neutral border city between Judah and the northern tribes</em>—and brings the <strong>Ark of the Covenant</strong> into Jerusalem with joyful worship, reuniting Israel’s political and spiritual life.'
+                ]
+            },
+            {
+                id: 'IV-4',
+                topic: 'IV',
+                topicTitle: 'Topic IV: The Call to Greater Promises (Samuel Anoints David)',
+                title: '4. The Davidic Covenant: The Greater Messianic Promise (2 Samuel 7)',
+                figures: 'King David, Nathan the Prophet, Solomon (David’s son and successor), Jesus Christ (the ultimate "Son of David").',
+                places: 'Jerusalem (David’s cedar palace and future Temple site on Mount Moriah).',
+                bullets: [
+                    '<strong>David’s Desire vs. God’s Promise (2 Samuel 7:1–11):</strong> Experiencing peace from surrounding enemies, David feels convicted living in a luxurious <strong>cedar palace</strong> while the Ark remains in a tent, and proposes building a Temple. Through the prophet <strong>Nathan</strong>, God flips the initiative: <u>humanity does not build a house for God; God builds an eternal dynasty (<em>bayit</em>—"house") for David</u>.',
+                    '<strong>Core Pillar 1 — A Great Name and Secure Land (vv. 9–11):</strong> God promises David renown among the earth’s great rulers and <strong>permanent rest</strong> for Israel.',
+                    '<strong>Core Pillar 2 — Royal Offspring and the Physical Temple (vv. 12–14):</strong> David’s son <strong>Solomon</strong> will construct the physical Temple, and God adopts the Davidic king as His son—<em>chastening him when he sins, yet never revoking covenant loyalty as He did with Saul</em>.',
+                    '<strong>Core Pillar 3 — An Unconditional, Eternal Throne (v. 16):</strong> <u>"Your house and your kingdom shall be made sure forever before me. Your throne shall be established forever."</u>',
+                    '<strong>Theological Fulfillment:</strong> Even when later Davidic kings rebel and Jerusalem falls to Babylon in <strong>586 BC</strong>, God’s sworn oath cannot fail (<em>Psalm 89:34–37</em>). The prophets Isaiah, Jeremiah, and Ezekiel anchor Israel’s hope in a coming righteous <strong>Branch of David</strong>—fulfilled decisively in <strong>Jesus of Nazareth</strong>, born in Bethlehem of David’s lineage, whose resurrection inaugurates an eternal, unshakeable Kingdom (<em>Luke 1:32–33; Acts 2:29–36; Revelation 22:16</em>).'
+                ]
+            }
+        ];
+
+        // =========================================================================
+        // 2. ALL 92 STUDY FLASHCARDS
+        // =========================================================================
+        const FLASHCARDS_DATA = [
+            { topic: 'I', front: 'Mount Nebo (Joshua 1)', back: 'The location where Moses died at age 120 before Israel entered Canaan.', hint: 'Where Moses passed away.' },
+            { topic: 'I', front: 'Meaning of the name Yeshua (Joshua)', back: '"Yahweh is salvation"', hint: 'Joshua\'s Hebrew name.' },
+            { topic: 'I', front: 'Book of the Law (Joshua 1)', back: 'The text Joshua was commanded to meditate on day and night without turning to the right or left.', hint: 'Joshua\'s primary weapon for success.' },
+            { topic: 'I', front: 'Reuben, Gad, and half-Manasseh', back: 'The Transjordanian tribes settled east of the Jordan who committed their fighting men to serve as the vanguard.', hint: 'Tribes settled east of the Jordan.' },
+            { topic: 'I', front: 'Plains of Moab (Joshua 1)', back: 'Israel\'s eastern encampment right before crossing the Jordan River into Canaan.', hint: 'Camp east of the Jordan.' },
+            { topic: 'I', front: 'Reason Moses could not enter the Promised Land', back: 'He disobeyed God at Meribah (Numbers 20:12).', hint: 'Striking the rock in the wilderness.' },
+            { topic: 'I', front: 'Joshua\'s former name', back: 'Hoshea', hint: 'Starts with H.' },
+            { topic: 'I', front: 'How many times did God command Joshua to "be strong and courageous" in Joshua 1?', back: 'Four times', hint: 'Between three and five times.' },
+            { topic: 'I', front: 'Joshua\'s primary weapon for military and spiritual success', back: 'Meditation on and obedience to Scripture (the Book of the Law).', hint: 'Not iron chariots or tactics.' },
+            { topic: 'I', front: 'River forming the eastern border of Canaan', back: 'The Jordan River', hint: 'Crossed on dry ground.' },
+            { topic: 'I', front: 'Tribe of Joshua, son of Nun', back: 'Ephraim', hint: 'One of Joseph\'s two sons.' },
+            { topic: 'I', front: 'Transition signaled by the shift from Moses to Joshua', back: 'A shift from wilderness wandering to covenant inheritance.', hint: 'From wandering to possessing.' },
+            { topic: 'I', front: 'Patriarch to whom God originally swore Canaan\'s boundaries', back: 'Abraham (from the wilderness and Lebanon to the Euphrates and the Great Sea).', hint: 'Genesis 15:18.' },
+            { topic: 'I', front: 'Source of biblical courage in Joshua 1', back: 'God\'s unbroken presence ("just as I was with Moses, so I will be with you").', hint: 'Not self-generated bravado.' },
+            { topic: 'I', front: 'Shittim (Joshua 2)', back: 'Israel\'s final encampment east of the Jordan from which Joshua secretly sent two spies.', hint: 'Starting point of the two spies.' },
+            { topic: 'I', front: 'Material under which Rahab hid the two spies', back: 'Drying flax stalks on her flat roof.', hint: 'Plant stalks on the roof.' },
+            { topic: 'I', front: 'Sihon and Og (Joshua 2)', back: 'Defeated Amorite kings whose fall terrified Jericho.', hint: 'Kings of Heshbon and Bashan.' },
+            { topic: 'I', front: 'Scarlet cord (Joshua 2)', back: 'Sign hung in Rahab\'s window echoing Passover blood on Israelite doorposts in Egypt.', hint: 'Red cord in the window.' },
+            { topic: 'I', front: 'Salmon (Joshua 2 / Matthew 1)', back: 'The Judahite man whom Rahab later married, placing her in the lineage of King David and Jesus Christ.', hint: 'Rahab\'s Israelite husband.' },
+            { topic: 'I', front: 'Why Joshua sent two spies secretly rather than twelve publicly', back: 'So a negative report could not demoralize the camp (as in Numbers 13).', hint: 'Preventing panic in camp.' },
+            { topic: 'I', front: 'Location of Rahab\'s house in Jericho', back: 'Built directly into Jericho\'s outer defensive wall.', hint: 'Part of the city wall.' },
+            { topic: 'I', front: 'Events that made Jericho\'s inhabitants melt with fear', back: 'The Red Sea crossing and the defeats of Sihon and Og.', hint: 'Reports of Yahweh\'s victories.' },
+            { topic: 'I', front: 'How many days did the two spies hide in the limestone caves west of Jericho?', back: 'Three days', hint: 'Until pursuers returned.' },
+            { topic: 'I', front: 'Jericho\'s strategic role in Canaan', back: 'An ancient, heavily fortified oasis city guarding the central ascent into Canaan\'s hill country.', hint: 'Gateway to the central hill country.' },
+            { topic: 'I', front: 'Direction Rahab misdirected the King of Jericho\'s soldiers', back: 'Toward the Jordan fords.', hint: 'River crossing points.' },
+            { topic: 'I', front: 'Hesed (Joshua 2)', back: 'Covenant kindness/loyalty secured by Rahab for her household.', hint: 'Hebrew term for covenant kindness.' },
+            { topic: 'I', front: '2,000 cubits (Joshua 3)', back: 'Respectful distance (~3,000 feet) kept behind the Ark of the Covenant so every tribe could see it.', hint: 'Spacing behind the Ark.' },
+            { topic: 'I', front: 'Mount Hermon\'s effect on the Jordan crossing', back: 'Melting snow during spring harvest caused the Jordan River to overflow its banks.', hint: 'Source of spring floodwaters.' },
+            { topic: 'I', front: 'Adam (Joshua 3)', back: 'Town ~16–20 miles upstream near Zarethan where the Jordan waters piled up in a heap.', hint: 'Named like the first man.' },
+            { topic: 'I', front: 'Gilgal (Joshua 4)', back: 'First base camp inside Canaan where the twelve memorial stones were erected.', hint: 'Name means "rolling".' },
+            { topic: 'I', front: 'Exact moment the Jordan floodwaters parted', back: 'When the feet of the Levitical priests carrying the Ark stepped into the rushing water.', hint: 'Stepping out in faith first.' },
+            { topic: 'I', front: 'Primary purpose of the twelve memorial stones', back: 'To serve as a catechism/teaching tool for future children asking, "What do these stones mean?"', hint: 'Teaching future generations.' },
+            { topic: 'I', front: 'Effect of the Jordan crossing on Joshua\'s leadership', back: 'It irreversibly established his leadership before Israel just as the Red Sea did for Moses.', hint: 'Validated his authority.' },
+            { topic: 'I', front: 'Spiritual preparation required before crossing the Jordan', back: 'Ritual purification and consecration (washing clothes and abstaining from defilement).', hint: 'Consecration precedes intervention.' },
+            { topic: 'I', front: 'Gibeath-haaraloth (Joshua 5)', back: '"Hill of Foreskins," where the uncircumcised wilderness generation was circumcised.', hint: 'Site of circumcision near Jericho.' },
+            { topic: 'I', front: '14th of Nisan (Joshua 5)', back: 'Date on which Israel celebrated its third recorded Passover on the plains of Jericho.', hint: 'Passover date.' },
+            { topic: 'I', front: 'Cessation of Manna (Joshua 5)', back: 'Daily miraculous food stopped permanently the day after Passover after eating Canaan\'s roasted grain.', hint: 'Transition to settled stewardship.' },
+            { topic: 'I', front: 'Commander of the Lord\'s Army (Joshua 5)', back: 'Pre-incarnate appearance of Christ (Christophany) near Jericho who declared, "Neither; but I am commander of the army of the Lord."', hint: 'Heavenly warrior with drawn sword.' },
+            { topic: 'I', front: 'Meaning of rolling away "the reproach of Egypt"', back: 'Removing the taunt that God brought Israel out only to die in the desert.', hint: 'Why Gilgal means "rolling".' },
+            { topic: 'I', front: 'Command given to Joshua by the Commander of the Lord\'s Army', back: '"Remove your sandals from your feet" (echoing Moses at the burning bush).', hint: 'Holy ground.' },
+            { topic: 'II', front: 'Herem (Joshua 6)', back: 'The ban devoting Jericho exclusively to God as the "firstfruits" of conquest.', hint: 'Devoted to God.' },
+            { topic: 'II', front: 'Hiel of Bethel (Joshua 6 / 1 Kings 16)', back: 'Man who rebuilt Jericho\'s walls centuries later under King Ahab at the cost of his firstborn and youngest sons.', hint: 'Fulfilled Joshua\'s curse.' },
+            { topic: 'II', front: 'Valley of Achor (Joshua 7)', back: '"Valley of Trouble," where Achan and his household were judged—later transformed into a "door of hope" in Hosea.', hint: 'Site of Achan\'s judgment.' },
+            { topic: 'II', front: 'Mount Ebal and Mount Gerizim (Joshua 8)', back: 'Mountains near Shechem where Joshua built an altar and publicly read the blessings and curses of the Law.', hint: 'Covenant renewal mountains.' },
+            { topic: 'II', front: 'Strategic military purpose of conquering Jericho first', back: 'Splitting Canaan cleanly through the central ridge to prevent northern and southern kingdoms from uniting.', hint: 'Divide and conquer.' },
+            { topic: 'II', front: 'Items stolen by Achan from Jericho', back: 'A Shinar (Babylonian) robe, 200 shekels of silver, and a 50-shekel gold bar.', hint: 'Robe, silver, and gold.' },
+            { topic: 'II', front: 'Tactic used to conquer Ai on the second attempt', back: 'A night ambush combined with a feigned retreat.', hint: 'Luring Ai\'s army out.' },
+            { topic: 'II', front: 'Mistake Israel\'s leaders made with the Gibeonites', back: 'They evaluated visible evidence (moldy bread and patched wineskins) but "did not ask counsel from the Lord."', hint: 'Failure to seek God\'s counsel.' },
+            { topic: 'II', front: 'Role assigned to the Gibeonites after their deception', back: 'Perpetual woodcutters and water carriers for the congregation and the Lord\'s altar.', hint: 'Temple servants.' },
+            { topic: 'II', front: 'Consequence when King Saul violated the Gibeonite oath', back: 'God sent a three-year famine on Israel (2 Samuel 21:1).', hint: 'Oaths in Yahweh\'s name are inviolable.' },
+            { topic: 'II', front: 'Adoni-zedek (Joshua 10)', back: 'King of Jerusalem who organized the five-king Amorite coalition to attack Gibeon.', hint: 'King of Jerusalem.' },
+            { topic: 'II', front: 'Ascent of Beth-horon (Joshua 10)', back: 'Steep mountain pass where God threw the Amorite coalition into panic and rained lethal hailstones.', hint: 'Hailstorm battle site.' },
+            { topic: 'II', front: 'Valley of Aijalon (Joshua 10)', back: 'Valley over which the moon stood still while the sun stood still over Gibeon.', hint: 'Moon stood still here.' },
+            { topic: 'II', front: 'Shemesh (Joshua 10)', back: 'Canaanite sun god humbled when Yahweh commanded the sun and moon to stand still.', hint: 'Canaanite astral deity.' },
+            { topic: 'II', front: 'Makkedah (Joshua 10)', back: 'Cave where the five southern Amorite kings were trapped and executed.', hint: 'Cave of the five kings.' },
+            { topic: 'II', front: 'Why Joshua prayed for the sun and moon to stand still', back: 'To prevent fleeing Amorite armies from regrouping in fortified cities under cover of darkness.', hint: 'Needed daylight to finish the rout.' },
+            { topic: 'II', front: 'Prophetic gesture performed on the five kings at Makkedah', back: 'Commanders placed their feet on the kings\' necks as a symbol of total dominion.', hint: 'Feet on necks.' },
+            { topic: 'II', front: 'Jabin (Joshua 11)', back: 'King of Hazor who assembled the massive northern Canaanite confederacy with iron-clad chariots.', hint: 'King of Hazor.' },
+            { topic: 'II', front: 'Hazor (Joshua 11)', back: 'Largest fortified city in Canaan (~200 acres), which Joshua burned to the ground.', hint: 'Only northern mound-city burned.' },
+            { topic: 'II', front: 'Waters of Merom (Joshua 11)', back: 'Location in Upper Galilee where Joshua launched a surprise attack before enemy chariots could deploy.', hint: 'Site of the northern battle.' },
+            { topic: 'II', front: 'How many Canaanite kings did Joshua defeat? (Joshua 12)', back: '31 kings over roughly seven years of campaigning.', hint: 'Thirty-one.' },
+            { topic: 'II', front: 'God\'s command regarding northern horses and chariots', back: 'Hamstring the horses and burn the chariots so Israel never trusts in military hardware rather than Yahweh.', hint: 'Disable horses, burn chariots.' },
+            { topic: 'II', front: 'Shiloh (Joshua 18)', back: 'Site where the Tabernacle was permanently erected and land was distributed by sacred lot.', hint: 'Tabernacle center.' },
+            { topic: 'II', front: 'Hebron / Kiriath-arba (Joshua 14)', back: 'Mountain inheritance inhabited by the giant Anakim, claimed by 85-year-old Caleb.', hint: 'Caleb\'s mountain.' },
+            { topic: 'II', front: 'Tribe of Levi\'s inheritance', back: 'No contiguous territory; scattered across 48 cities to preserve covenant literacy nationwide.', hint: '48 Levitical cities.' },
+            { topic: 'II', front: 'Six Cities of Refuge (Joshua 20)', back: 'Kedesh, Shechem, Hebron, Bezer, Ramoth, and Golan.', hint: 'Three west, three east of Jordan.' },
+            { topic: 'II', front: 'Shechem (Joshua 24)', back: 'Where God first promised Canaan to Abraham and where Joshua led Israel\'s farewell covenant renewal before dying at age 110.', hint: '"Choose this day whom you will serve."' },
+            { topic: 'III', front: 'Bochim (Judges 2)', back: '"Weepers," where the Angel of the Lord indicted Israel for failing to tear down pagan altars.', hint: 'Means "Weepers".' },
+            { topic: 'III', front: 'Baal and Ashtaroth (Judges 2)', back: 'Primary Canaanite storm/fertility god and goddess of war/fertility worshiped by Israel.', hint: 'Canaanite fertility deities.' },
+            { topic: 'III', front: 'Root causes of turbulence in Judges 1–2', back: 'Incomplete obedience (taxing Canaanite forced labor) and failing to pass historical memory to the next generation.', hint: 'Compromise and forgetfulness.' },
+            { topic: 'III', front: 'Four stages of the cycle in Judges', back: '1. Rebellion, 2. Retribution, 3. Repentance, 4. Restoration.', hint: 'Four R\'s.' },
+            { topic: 'III', front: 'Shophet (Judges)', back: 'Hebrew term for a charismatic military-civil deliverer (Judge) raised up by God\'s Spirit.', hint: 'Hebrew for Judge.' },
+            { topic: 'III', front: 'Closing refrain of the Book of Judges (Judges 21:25)', back: '"In those days there was no king in Israel. Everyone did what was right in his own eyes."', hint: 'Points to the need for a godly king.' },
+            { topic: 'III', front: 'Othniel (Judges 3)', back: 'Caleb\'s nephew from Judah; unblemished gold standard of judges who defeated Cushan-rishathaim (40 years of peace).', hint: 'First judge.' },
+            { topic: 'III', front: 'Ehud (Judges 3)', back: 'Left-handed Benjamite who concealed an 18-inch blade on his right thigh and assassinated King Eglon of Moab (80 years of rest).', hint: 'Left-handed deliverer.' },
+            { topic: 'III', front: 'Deborah, Barak, and Jael (Judges 4–5)', back: 'Prophetess Deborah summoned Barak; a flash flood bogged down Sisera\'s 900 iron chariots at Kishon, and Jael killed Sisera with a tent peg.', hint: 'Prophetess and judge.' },
+            { topic: 'III', front: 'Gideon / Jerubbaal (Judges 6–8)', back: 'Routed 135,000 Midianites with 300 men, but later fashioned a golden ephod in Ophrah that became an idol.', hint: '300 men with jars and torches.' },
+            { topic: 'III', front: 'Abimelech (Judges 9)', back: '"Anti-judge" who murdered 70 half-brothers and died when a woman dropped an upper millstone on his skull at Thebez.', hint: 'Gideon\'s ruthless son.' },
+            { topic: 'III', front: 'Jephthah (Judges 10–12)', back: 'Gileadite outcast who defeated Ammon, made a rash vow costing his daughter, and fought Ephraim over the word "Shibboleth."', hint: 'Shibboleth password.' },
+            { topic: 'III', front: 'Samson (Judges 13–16)', back: 'Compromised Nazirite from Dan; blinded in Gaza, he achieved his greatest victory in death by collapsing Dagon\'s temple.', hint: 'Nazirite from birth.' },
+            { topic: 'III', front: 'Idolatry of Micah and the Danites (Judges 17–18)', back: 'Micah hired Moses\' grandson Jonathan as a private priest; Dan stole the silver idols to set up an unauthorized sanctuary at Laish/Dan.', hint: 'Spiritual corruption.' },
+            { topic: 'III', front: 'Atrocity at Gibeah and Civil War (Judges 19–21)', back: 'Benjamite men of Gibeah replicated Sodom\'s sin; eleven tribes waged civil war, reducing Benjamin to 600 surviving men.', hint: 'Moral and social collapse.' },
+            { topic: 'III', front: 'Corruption of Eli\'s Priesthood (1 Samuel 2–4)', back: 'Hophni and Phinehas defiled sacrifices; Israel treated the Ark like a good-luck charm at Aphek, leading to its capture and Shiloh\'s fall.', hint: 'Ritual without righteousness.' },
+            { topic: 'III', front: 'Ebenezer (1 Samuel 7)', back: 'Memorial stone meaning "Till now the Lord has helped us," erected by Samuel after revival at Mizpah.', hint: 'Stone of Help.' },
+            { topic: 'IV', front: 'Israel\'s Demand for a King (1 Samuel 8)', back: 'Elders demanded a king "like all the nations," rejecting Yahweh\'s kingship out of unbelief.', hint: 'Prompted by Samuel\'s corrupt sons.' },
+            { topic: 'IV', front: 'Saul\'s Two Acts of Disqualification (1 Samuel 13 & 15)', back: 'Usurping the priestly sacrifice at Gilgal, and sparing King Agag and Amalekite livestock ("To obey is better than sacrifice").', hint: 'Gilgal and Amalek.' },
+            { topic: 'IV', front: 'God\'s Criterion of the Heart (1 Samuel 16:7)', back: '"Man looks on the outward appearance, but the Lord looks on the heart."', hint: 'Spoken when Eliab passed before Samuel.' },
+            { topic: 'IV', front: 'Secret Anointing of David at Bethlehem (1 Samuel 16)', back: 'Youngest of Jesse\'s eight sons, summoned from tending sheep and anointed by Samuel; the Spirit of the Lord rushed upon David.', hint: 'Anointed in Bethlehem.' },
+            { topic: 'IV', front: 'Valley of Elah (1 Samuel 17)', back: 'Where David slew 9-foot-9 Goliath of Gath with a sling and stone in the name of the living God.', hint: 'David vs. Goliath.' },
+            { topic: 'IV', front: 'Wilderness Refinement & Jonathan\'s Friendship (1 Samuel 18–31)', back: 'David led 600 outcasts, was supported by Jonathan, and twice spared Saul\'s life (at En-gedi and Hachilah).', hint: 'Spared Saul twice.' },
+            { topic: 'IV', front: 'Ascension of David to the Throne (2 Samuel 1–6)', back: 'Reigned 7.5 years over Judah at Hebron, united all twelve tribes, captured Jerusalem, and brought in the Ark.', hint: 'Hebron then Jerusalem.' },
+            { topic: 'IV', front: 'The Davidic Covenant (2 Samuel 7)', back: 'Through prophet Nathan, God promised David an eternal dynasty (bayit), Solomon building the Temple, and an everlasting throne fulfilled in Jesus Christ.', hint: 'Your throne shall be established forever.' }
+        ];
+
+        // =========================================================================
+        // 3. COMPLETE 255-POINT UNIT TEST DATA (17 SECTIONS x 15 ITEMS = 255 PTS)
+        // =========================================================================
+        const TEST_SECTIONS = [
+            {
+                id: 'S1',
+                topic: 'Topic I: Journey to the Promised Land',
+                title: 'Section 1: Transition of Leadership & Divine Commissioning (Joshua 1)',
+                matching: {
+                    items: ['1. Mount Nebo', '2. Yeshua', '3. Book of the Law', '4. Reuben, Gad, half-Manasseh', '5. Plains of Moab'],
+                    options: [
+                        { key: 'A', text: 'Meaning "Yahweh is salvation"' },
+                        { key: 'B', text: 'Tribes settled east of the Jordan who served as vanguard' },
+                        { key: 'C', text: 'Location where Moses died at age 120' },
+                        { key: 'D', text: 'Israel’s eastern encampment before crossing into Canaan' },
+                        { key: 'E', text: 'Text Joshua was commanded to meditate on day and night' }
+                    ],
+                    answers: ['C', 'A', 'E', 'B', 'D']
+                },
+                mc: [
+                    { q: '1. Why was Moses prohibited from entering the Promised Land?', opts: ['A. He was too old to lead in battle', 'B. He disobeyed God at Meribah', 'C. He belonged to the tribe of Levi', 'D. He chose to stay east of the Jordan'], ans: 'B' },
+                    { q: '2. What was Joshua’s former name before being named Joshua?', opts: ['A. Caleb', 'B. Eleazar', 'C. Hoshea', 'D. Phinehas'], ans: 'C' },
+                    { q: '3. How many times did God command Joshua to "be strong and courageous" in Joshua 1?', opts: ['A. Two times', 'B. Three times', 'C. Four times', 'D. Seven times'], ans: 'C' },
+                    { q: '4. According to Joshua 1, what was Joshua’s primary weapon for military and spiritual success?', opts: ['A. Iron chariots', 'B. Superior numbers', 'C. Secret alliances', 'D. Meditation on and obedience to Scripture'], ans: 'D' },
+                    { q: '5. Which river formed the eastern border of Canaan that Israel needed to cross?', opts: ['A. Euphrates River', 'B. Jordan River', 'C. Kishon River', 'D. Nile River'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['Abraham', 'Ephraim', 'Great Sea', 'inheritance', 'presence', 'Sinai'],
+                    items: [
+                        { prompt: '1. Joshua, the son of Nun, belonged to the tribe of ________.', ans: 'Ephraim' },
+                        { prompt: '2. The transition from Moses to Joshua signaled a shift from wilderness wandering to covenant ________.', ans: 'inheritance' },
+                        { prompt: '3. God renewed the territorial boundaries originally sworn to ________.', ans: 'Abraham' },
+                        { prompt: '4. The Promised Land stretched from the wilderness and Lebanon to the Euphrates and the ________.', ans: 'Great Sea' },
+                        { prompt: '5. In the biblical worldview, courage is the direct byproduct of God’s unbroken ________.', ans: 'presence' }
+                    ]
+                }
+            },
+            {
+                id: 'S2',
+                topic: 'Topic I: Journey to the Promised Land',
+                title: 'Section 2: Reconnaissance of Jericho and Rahab’s Faith (Joshua 2)',
+                matching: {
+                    items: ['1. Shittim', '2. Drying flax stalks', '3. Sihon and Og', '4. Scarlet cord', '5. Salmon'],
+                    options: [
+                        { key: 'A', text: 'Material under which Rahab hid the two spies' },
+                        { key: 'B', text: 'Defeated Amorite kings whose fall terrified Jericho' },
+                        { key: 'C', text: 'Israel’s final encampment east of the Jordan' },
+                        { key: 'D', text: 'Judahite man whom Rahab later married' },
+                        { key: 'E', text: 'Sign hung in Rahab’s window echoing Passover blood' }
+                    ],
+                    answers: ['C', 'A', 'B', 'E', 'D']
+                },
+                mc: [
+                    { q: '1. Why did Joshua send two spies secretly rather than twelve spies publicly?', opts: ['A. Only two men volunteered', 'B. So a negative report would not demoralize the camp', 'C. Jericho was too small for twelve spies', 'D. Moses forbade sending twelve spies'], ans: 'B' },
+                    { q: '2. Where was Rahab’s house located?', opts: ['A. In the center of the palace', 'B. Outside the city gates', 'C. Built directly into Jericho’s outer defensive wall', 'D. Near the Jordan River fords'], ans: 'C' },
+                    { q: '3. What events caused the hearts of Jericho’s inhabitants to melt with fear?', opts: ['A. The fall of Ai and Gibeon', 'B. The ten plagues in Egypt only', 'C. The Red Sea crossing and the defeats of Sihon and Og', 'D. The death of Moses'], ans: 'C' },
+                    { q: '4. How many days did the two spies hide in the limestone caves west of Jericho?', opts: ['A. Two days', 'B. Three days', 'C. Six days', 'D. Seven days'], ans: 'B' },
+                    { q: '5. Which prominent biblical figures descended from Rahab after she was grafted into Israel?', opts: ['A. Moses and Aaron', 'B. Samuel and Saul', 'C. King David and Jesus Christ', 'D. Gideon and Samson'], ans: 'C' }
+                ],
+                fib: {
+                    wordBank: ['fords', 'hesed', 'Jericho', 'monotheistic', 'Passover', 'Ramah'],
+                    items: [
+                        { prompt: '1. ________ was an ancient, heavily fortified oasis city guarding the central ascent into Canaan’s hill country.', ans: 'Jericho' },
+                        { prompt: '2. Rahab misdirected the King of Jericho’s soldiers toward the Jordan ________.', ans: 'fords' },
+                        { prompt: '3. Rahab voiced one of the purest confessions of ________ faith in the Old Testament.', ans: 'monotheistic' },
+                        { prompt: '4. Through the scarlet cord covenant, Rahab secured salvation and covenant kindness (________) for her family.', ans: 'hesed' },
+                        { prompt: '5. The scarlet cord hung in Rahab’s window echoed the ________ blood on Israelite doorposts in Egypt.', ans: 'Passover' }
+                    ]
+                }
+            },
+            {
+                id: 'S3',
+                topic: 'Topic I: Journey to the Promised Land',
+                title: 'Section 3: The Miraculous Crossing of the Jordan River (Joshua 3–4)',
+                matching: {
+                    items: ['1. 2,000 cubits', '2. Mount Hermon', '3. Adam', '4. Gilgal', '5. Levitical Priests'],
+                    options: [
+                        { key: 'A', text: 'Town upstream where the Jordan waters piled up' },
+                        { key: 'B', text: 'First base camp inside Canaan where stones were erected' },
+                        { key: 'C', text: 'Respectful distance kept behind the Ark of the Covenant' },
+                        { key: 'D', text: 'Source of melting snow causing the Jordan to flood' },
+                        { key: 'E', text: 'Bearers of the Ark whose feet touched the water first' }
+                    ],
+                    answers: ['C', 'D', 'A', 'B', 'E']
+                },
+                mc: [
+                    { q: '1. What did Joshua instruct the Israelites to do before crossing the Jordan River?', opts: ['A. Build wooden rafts', 'B. Undergo ritual purification and sanctification', 'C. Fast for seven days', 'D. Attack Jericho’s outer wall'], ans: 'B' },
+                    { q: '2. During what season did God deliberately time the crossing of the Jordan?', opts: ['A. Winter drought', 'B. Mid-summer heat', 'C. Spring harvest when the river overflowed its banks', 'D. Autumn feast'], ans: 'C' },
+                    { q: '3. At what exact moment did the rushing floodwaters of the Jordan part?', opts: ['A. When Joshua raised his staff', 'B. When the priests’ feet stepped into the water', 'C. When the trumpets blew seven times', 'D. At midnight'], ans: 'B' },
+                    { q: '4. What was the primary purpose of the twelve memorial stones taken from the riverbed?', opts: ['A. To build an altar for burnt offerings', 'B. To fortify Gilgal’s walls', 'C. To serve as a teaching tool for future generations', 'D. To mark tribal borders'], ans: 'C' },
+                    { q: '5. How did the Jordan crossing affect Joshua’s standing among the Israelites?', opts: ['A. It made them fear him', 'B. It irreversibly established his leadership just as the Red Sea did for Moses', 'C. It caused them to appoint twelve co-leaders', 'D. It led to a rebellion'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['Ark of the Covenant', 'catechism', 'consecration', 'Red Sea', 'Shiloh', 'Zarethan'],
+                    items: [
+                        { prompt: '1. Spiritual ________ always precedes divine intervention.', ans: 'consecration' },
+                        { prompt: '2. The ________ led Israel into uncharted territory, symbolizing the throne of God’s presence.', ans: 'Ark of the Covenant' },
+                        { prompt: '3. The Jordan’s waters heaped up at Adam, near ________.', ans: 'Zarethan' },
+                        { prompt: '4. The Jordan crossing bookended the Exodus crossing of the ________.', ans: 'Red Sea' },
+                        { prompt: '5. The monument of twelve boulders served as a ________ for future children asking what the stones meant.', ans: 'catechism' }
+                    ]
+                }
+            },
+            {
+                id: 'S4',
+                topic: 'Topic I: Journey to the Promised Land',
+                title: 'Section 4: Consecration at Gilgal (Joshua 5)',
+                matching: {
+                    items: ['1. Gilgal', '2. Gibeath-haaraloth', '3. 14th of Nisan', '4. Manna', '5. Commander of the Lord’s Army'],
+                    options: [
+                        { key: 'A', text: 'Meaning "Hill of Foreskins"' },
+                        { key: 'B', text: 'Date on which Israel celebrated Passover on the plains of Jericho' },
+                        { key: 'C', text: 'Meaning "rolling," where the reproach of Egypt was rolled away' },
+                        { key: 'D', text: 'Pre-incarnate appearance of Christ (Christophany) near Jericho' },
+                        { key: 'E', text: 'Daily miraculous food that ceased after Israel ate Canaan’s grain' }
+                    ],
+                    answers: ['C', 'A', 'B', 'E', 'D']
+                },
+                mc: [
+                    { q: '1. Why did the wilderness generation need to be circumcised at Gilgal?', opts: ['A. They had forgotten the law', 'B. Those born during the 40-year wandering had not been circumcised', 'C. It was a Canaanite custom', 'D. Moses forbade it earlier'], ans: 'B' },
+                    { q: '2. What did God mean by rolling away "the reproach of Egypt"?', opts: ['A. Returning Egyptian gold', 'B. Removing the taunt that God brought Israel out only to die in the desert', 'C. Forgiving Pharaoh', 'D. Destroying Egyptian records'], ans: 'B' },
+                    { q: '3. Which recorded Passover in Israel’s history was celebrated at Gilgal?', opts: ['A. The first', 'B. The second', 'C. The third (after Egypt and Sinai)', 'D. The fortieth'], ans: 'C' },
+                    { q: '4. When Joshua asked the Commander of the Lord’s army, "Are you for us, or for our adversaries?", what did he reply?', opts: ['A. "I am for Israel"', 'B. "Neither; but I am commander of the army of the Lord"', 'C. "I am against Jericho"', 'D. "Follow me into battle"'], ans: 'B' },
+                    { q: '5. What command did the Commander give Joshua that echoed Moses at the burning bush?', opts: ['A. "Draw your sword"', 'B. "Remove your sandals from your feet"', 'C. "Build an altar here"', 'D. "Sound the ram\'s horn"'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['Abrahamic', 'burning bush', 'holiness', 'paralyzed', 'stewardship', 'tabernacle'],
+                    items: [
+                        { prompt: '1. Hearing of the dry-ground Jordan crossing, the Amorite and Canaanite kings were psychologically ________.', ans: 'paralyzed' },
+                        { prompt: '2. Circumcising the fighting males outside Jericho was a renewal of the ________ Covenant.', ans: 'Abrahamic' },
+                        { prompt: '3. The permanent cessation of manna signaled that Israel had graduated from wilderness dependency to settled ________.', ans: 'stewardship' },
+                        { prompt: '4. God does not join human agendas; humans must align with God’s ________.', ans: 'holiness' },
+                        { prompt: '5. Removing his sandals proved Canaan was holy ground, just as Moses experienced at the ________.', ans: 'burning bush' }
+                    ]
+                }
+            },
+            {
+                id: 'S5',
+                topic: 'Topic II: Battles for the Promised Land',
+                title: 'Section 1: The Central Campaign: Jericho, Ai, and Gibeon (Joshua 6–9)',
+                matching: {
+                    items: ['1. Herem', '2. Hiel of Bethel', '3. Valley of Achor', '4. Mount Ebal & Gerizim', '5. Gibeon'],
+                    options: [
+                        { key: 'A', text: 'Site where Achan and his household were judged' },
+                        { key: 'B', text: 'Hivite city that tricked Israel with moldy bread' },
+                        { key: 'C', text: 'The ban devoting Jericho exclusively to God as firstfruits' },
+                        { key: 'D', text: 'Man who rebuilt Jericho at the cost of his sons' },
+                        { key: 'E', text: 'Mountains where Joshua built an altar and read the Law' }
+                    ],
+                    answers: ['C', 'D', 'A', 'E', 'B']
+                },
+                mc: [
+                    { q: '1. What was the strategic military purpose of conquering Jericho first?', opts: ['A. To capture gold for weapons', 'B. To split Canaan through the central ridge so north and south could not unite', 'C. To establish a seaport', 'D. To retreat back across the Jordan'], ans: 'B' },
+                    { q: '2. What stolen items caused Israel’s defeat at Ai?', opts: ['A. Iron chariots and spears', 'B. A Babylonian robe, 200 shekels of silver, and a 50-shekel gold bar', 'C. Canaanite idols of Baal', 'D. Horses from Hazor'], ans: 'B' },
+                    { q: '3. What tactic did Joshua use on the second attack against Ai?', opts: ['A. Seven days of silent marching', 'B. A night ambush combined with a feigned retreat', 'C. Battering rams', 'D. Flooding the valley'], ans: 'B' },
+                    { q: '4. What crucial mistake did Israel’s leaders make when the Gibeonites arrived?', opts: ['A. They executed the envoys', 'B. They evaluated visible evidence and "did not ask counsel from the Lord"', 'C. They broke their oath immediately', 'D. They crowned the Gibeonite king'], ans: 'B' },
+                    { q: '5. What happened centuries later when King Saul violated Israel’s oath to the Gibeonites?', opts: ['A. Jericho’s walls rebuilt themselves', 'B. God sent a three-year famine on Israel', 'C. The Jordan overflowed', 'D. Gibeon conquered Jerusalem'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['ambush', 'door of hope', 'liturgy', 'servants', 'three-year', 'worship'],
+                    items: [
+                        { prompt: '1. Marching silently for six days and shouting on the seventh proved Jericho fell by divine ________, not siege engines.', ans: 'liturgy' },
+                        { prompt: '2. The Valley of Achor was later prophesied in Hosea to become a ________.', ans: 'door of hope' },
+                        { prompt: '3. Joshua conquered Ai on the second attempt using a brilliant night ________.', ans: 'ambush' },
+                        { prompt: '4. Leading Israel to Mount Ebal and Mount Gerizim demonstrated that ________ takes priority over military momentum.', ans: 'worship' },
+                        { prompt: '5. Because oaths in Yahweh’s name are inviolable, Israel spared the Gibeonites as perpetual temple ________.', ans: 'servants' }
+                    ]
+                }
+            },
+            {
+                id: 'S6',
+                topic: 'Topic II: Battles for the Promised Land',
+                title: 'Section 2: The Southern Campaign: The Amorite Coalition (Joshua 10)',
+                matching: {
+                    items: ['1. Adoni-zedek', '2. Ascent of Beth-horon', '3. Valley of Aijalon', '4. Shemesh', '5. Makkedah'],
+                    options: [
+                        { key: 'A', text: 'Steep pass where God rained lethal hailstones on fleeing armies' },
+                        { key: 'B', text: 'Canaanite sun god humbled when Yahweh halted the sun' },
+                        { key: 'C', text: 'King of Jerusalem who organized the five-king Amorite coalition' },
+                        { key: 'D', text: 'Cave where the five southern kings were trapped and executed' },
+                        { key: 'E', text: 'Valley over which the moon stood still during Joshua’s prayer' }
+                    ],
+                    answers: ['C', 'A', 'E', 'B', 'D']
+                },
+                mc: [
+                    { q: '1. Why did five Amorite kings besiege Gibeon?', opts: ['A. Gibeon refused to pay taxes', 'B. To punish Gibeon for making peace with Israel', 'C. Gibeon attacked Jerusalem', 'D. To capture the Ark'], ans: 'B' },
+                    { q: '2. How did Joshua respond to Gibeon’s urgent plea for help?', opts: ['A. He waited seven days at Gilgal', 'B. He executed a grueling 25-mile uphill forced march overnight', 'C. He sent two spies', 'D. He negotiated a truce'], ans: 'B' },
+                    { q: '3. What killed more fleeing Amorite soldiers than the swords of Israel at Beth-horon?', opts: ['A. Flash floods', 'B. Lethal hailstones rained down from heaven', 'C. Wild animals', 'D. Fire from heaven'], ans: 'B' },
+                    { q: '4. Why did Joshua pray aloud for the sun and moon to stand still?', opts: ['A. To warm the soldiers', 'B. To prevent fleeing armies from regrouping in fortified cities under cover of darkness', 'C. To dry up the Jordan River', 'D. To signal the Levites at Shiloh'], ans: 'B' },
+                    { q: '5. What prophetic gesture did Joshua’s commanders perform on the five captured kings at Makkedah?', opts: ['A. They crowned them', 'B. They placed their feet on the kings’ necks as a symbol of total dominion', 'C. They exiled them to Egypt', 'D. They shaved their heads'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['cosmos', 'dominion', 'Gilgal', 'hailstones', 'Jerusalem', 'Jericho'],
+                    items: [
+                        { prompt: '1. Adoni-zedek was the Amorite king of ________ who formed the southern coalition.', ans: 'Jerusalem' },
+                        { prompt: '2. Joshua marched 25 miles uphill overnight from ________ to rescue Gibeon.', ans: 'Gilgal' },
+                        { prompt: '3. God threw the coalition into panic and rained lethal ________ down the Beth-horon pass.', ans: 'hailstones' },
+                        { prompt: '4. Stopping the sun and moon humbled Canaanite astral deities by showing Yahweh commands the ________.', ans: 'cosmos' },
+                        { prompt: '5. Placing their feet on the kings’ necks symbolized total ________ over Canaan.', ans: 'dominion' }
+                    ]
+                }
+            },
+            {
+                id: 'S7',
+                topic: 'Topic II: Battles for the Promised Land',
+                title: 'Section 3: The Northern Campaign: The Waters of Merom (Joshua 11–12)',
+                matching: {
+                    items: ['1. Jabin', '2. Hazor', '3. Waters of Merom', '4. 31 kings', '5. Iron-clad chariots'],
+                    options: [
+                        { key: 'A', text: 'Largest fortified city in Canaan (~200 acres), burned by Joshua' },
+                        { key: 'B', text: 'Total number of Canaanite rulers defeated across Joshua’s campaigns' },
+                        { key: 'C', text: 'King of Hazor who assembled the massive northern confederacy' },
+                        { key: 'D', text: 'Advanced military hardware Joshua was commanded to burn' },
+                        { key: 'E', text: 'Upper Galilee site where Joshua launched a sudden surprise attack' }
+                    ],
+                    answers: ['C', 'A', 'E', 'B', 'D']
+                },
+                mc: [
+                    { q: '1. Who assembled the massive northern Canaanite confederacy against Israel?', opts: ['A. Adoni-zedek of Jerusalem', 'B. King Jabin of Hazor', 'C. Sihon of Heshbon', 'D. Eglon of Moab'], ans: 'B' },
+                    { q: '2. Why did God command Joshua to hamstring the horses and burn the chariots?', opts: ['A. They were broken', 'B. So Israel would never trust in military hardware rather than Yahweh', 'C. Israel lacked stables', 'D. To build an altar'], ans: 'B' },
+                    { q: '3. How did Joshua neutralize the northern coalition’s chariot advantage at the Waters of Merom?', opts: ['A. He flooded the plains', 'B. He struck suddenly before the chariots could deploy in open formation', 'C. He hired Egyptian archers', 'D. He retreated to Mount Tabor'], ans: 'B' },
+                    { q: '4. Why did Joshua burn only Hazor among the northern mound-cities?', opts: ['A. He ran out of torches', 'B. So Israel could inhabit the remaining cities intact', 'C. The other cities surrendered', 'D. Hazor was built of wood'], ans: 'B' },
+                    { q: '5. Roughly how many years did Joshua’s major conquest campaigns last?', opts: ['A. One year', 'B. Seven years', 'C. Twenty years', 'D. Forty years'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['chariots', 'hamstring', 'Hazor', 'intact', 'Merom', 'seven'],
+                    items: [
+                        { prompt: '1. King Jabin of ________ assembled the largest northern Canaanite coalition.', ans: 'Hazor' },
+                        { prompt: '2. God commanded Joshua to ________ the horses so Israel would trust in Yahweh alone.', ans: 'hamstring' },
+                        { prompt: '3. Joshua also burned the enemy ________ so Israel would not rely on military hardware.', ans: 'chariots' },
+                        { prompt: '4. Joshua struck suddenly at the Waters of ________ in Upper Galilee.', ans: 'Merom' },
+                        { prompt: '5. Joshua burned only Hazor so Israel could inhabit the remaining northern cities ________.', ans: 'intact' }
+                    ]
+                }
+            },
+            {
+                id: 'S8',
+                topic: 'Topic II: Battles for the Promised Land',
+                title: 'Section 4: Allotment of the Land and Covenant Farewell (Joshua 13–24)',
+                matching: {
+                    items: ['1. Shiloh', '2. Hebron', '3. Tribe of Levi', '4. Six Cities of Refuge', '5. Shechem'],
+                    options: [
+                        { key: 'A', text: 'Mountain inhabited by the giant Anakim, claimed by 85-year-old Caleb' },
+                        { key: 'B', text: 'Scattered across 48 cities to preserve covenant literacy nationwide' },
+                        { key: 'C', text: 'Site where the Tabernacle was permanently erected and lots were cast' },
+                        { key: 'D', text: 'Site of Joshua’s farewell covenant renewal and witness stone' },
+                        { key: 'E', text: 'Kedesh, Shechem, Hebron, Bezer, Ramoth, and Golan' }
+                    ],
+                    answers: ['C', 'A', 'B', 'E', 'D']
+                },
+                mc: [
+                    { q: '1. How was tribal land distributed at Shiloh so no tribe could accuse Joshua of favoritism?', opts: ['A. By tribal population', 'B. By sacred lot before the Tabernacle', 'C. By footrace', 'D. By elders’ vote'], ans: 'B' },
+                    { q: '2. At age 85, which territory did Caleb claim as his inheritance?', opts: ['A. Jericho', 'B. Hebron, inhabited by the giant Anakim', 'C. Mount Carmel', 'D. Gaza'], ans: 'B' },
+                    { q: '3. How many cities were assigned to the tribe of Levi across Israel?', opts: ['A. 12 cities', 'B. 24 cities', 'C. 48 cities', 'D. 70 cities'], ans: 'C' },
+                    { q: '4. What was the purpose of the six Cities of Refuge?', opts: ['A. To store grain', 'B. To protect those who killed someone accidentally from blood avengers', 'C. To house foreign kings', 'D. To train soldiers'], ans: 'B' },
+                    { q: '5. What did Joshua erect under the sanctuary oak at Shechem before dying at age 110?', opts: ['A. A golden calf', 'B. A massive stone as an enduring legal witness', 'C. A bronze serpent', 'D. A cedar palace'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['110', 'Anakim', 'lot', 'Shechem', 'Shiloh', 'witness'],
+                    items: [
+                        { prompt: '1. The Tabernacle was permanently erected at ________, where land was distributed by sacred ________.', ans: 'Shiloh' },
+                        { prompt: '2. At age 85, Caleb drove out the giant ________ to claim Hebron.', ans: 'Anakim' },
+                        { prompt: '3. At ________, Joshua challenged Israel: "Choose this day whom you will serve."', ans: 'Shechem' },
+                        { prompt: '4. Joshua erected a massive stone under the sanctuary oak as a legal ________ against Israel.', ans: 'witness' },
+                        { prompt: '5. Joshua died faithfully at the age of ________.', ans: '110' }
+                    ]
+                }
+            },
+            {
+                id: 'S9',
+                topic: 'Topic III: Israelites: The Periods of Turbulence',
+                title: 'Section 1: The Root Causes of Turbulence (Judges 1–2)',
+                matching: {
+                    items: ['1. Incomplete obedience', '2. Bochim', '3. Baal', '4. Ashtaroth', '5. Generational apostasy'],
+                    options: [
+                        { key: 'A', text: 'Site meaning "Weepers," where the Angel of the Lord indicted Israel' },
+                        { key: 'B', text: 'Canaanite storm and fertility god' },
+                        { key: 'C', text: 'Taxing Canaanite forced labor instead of driving them out' },
+                        { key: 'D', text: 'Result of failing to pass historical memory of Yahweh’s works to children' },
+                        { key: 'E', text: 'Canaanite goddess of war and fertility' }
+                    ],
+                    answers: ['C', 'A', 'B', 'E', 'D']
+                },
+                mc: [
+                    { q: '1. Instead of driving out the Canaanites completely, what compromise did Israel’s tribes make?', opts: ['A. They moved back to Egypt', 'B. They subjected the Canaanites to forced labor and taxation', 'C. They crowned Canaanite kings', 'D. They burned all their own cities'], ans: 'B' },
+                    { q: '2. Where did the Angel of the Lord ascend from Gilgal to rebuke Israel for breaking covenant?', opts: ['A. Shiloh', 'B. Bochim', 'C. Hebron', 'D. Mizpah'], ans: 'B' },
+                    { q: '3. Although the Israelites wept and offered sacrifices at Bochim, what critical step did they fail to take?', opts: ['A. They failed to fast', 'B. They failed to tear down the pagan altars', 'C. They failed to elect a king', 'D. They failed to circumcise their sons'], ans: 'B' },
+                    { q: '4. Why did the post-Joshua generation abandon Yahweh?', opts: ['A. The Torah scrolls were burned', 'B. Failure to pass down historical memory left them ignorant of Yahweh’s saving deeds', 'C. Joshua commanded them to worship Baal', 'D. The Levites left Canaan'], ans: 'B' },
+                    { q: '5. Which Canaanite deities did Israel worship to secure agricultural prosperity?', opts: ['A. Dagon and Chemosh', 'B. Baal and Ashtaroth', 'C. Molech and Milcom', 'D. Marduk and Ishtar'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['altars', 'assimilation', 'Bochim', 'fertility', 'memory', 'Shiloh'],
+                    items: [
+                        { prompt: '1. Tolerance of partial obedience planted the seeds of cultural ________.', ans: 'assimilation' },
+                        { prompt: '2. The Angel of the Lord rebuked Israel at ________ ("Weepers").', ans: 'Bochim' },
+                        { prompt: '3. Although the people wept, they failed to tear down the Canaanite ________.', ans: 'altars' },
+                        { prompt: '4. Failure to pass down historical ________ caused the next generation to forget Yahweh.', ans: 'memory' },
+                        { prompt: '5. Israel turned to Baal and Ashtaroth, believing they controlled rain and ________.', ans: 'fertility' }
+                    ]
+                }
+            },
+            {
+                id: 'S10',
+                topic: 'Topic III: Israelites: The Periods of Turbulence',
+                title: 'Section 2: The Recurring Cycle of Sin and Deliverance (Judges 2:11–23)',
+                matching: {
+                    items: ['1. Rebellion', '2. Retribution', '3. Repentance', '4. Restoration', '5. Shophet'],
+                    options: [
+                        { key: 'A', text: 'God lifts His protective hand, handing Israel to foreign raiders' },
+                        { key: 'B', text: 'Charismatic military-civil deliverer raised by God’s Spirit' },
+                        { key: 'C', text: 'Israel abandons Yahweh for Canaanite idols' },
+                        { key: 'D', text: 'God raises a deliverer to rescue Israel and grant temporary peace' },
+                        { key: 'E', text: 'Oppression forces Israel to cry out to the Lord for relief' }
+                    ],
+                    answers: ['C', 'A', 'E', 'D', 'B']
+                },
+                mc: [
+                    { q: '1. Approximately how many years does the turbulent period of the Judges span?', opts: ['A. 40–50 years', 'B. 100–120 years', 'C. 300–350 years', 'D. 700 years'], ans: 'C' },
+                    { q: '2. How does the theological structure of Judges progress over time?', opts: ['A. An upward spiral of holiness', 'B. A downward spiral ("Canaanization" of Israel) where each judge becomes more flawed', 'C. Constant peace after Othniel', 'D. Immediate unification under Judah'], ans: 'B' },
+                    { q: '3. What often motivated Israel’s cries for relief during the Repentance stage?', opts: ['A. Deep theological study', 'B. Pain of foreign oppression rather than genuine heart transformation', 'C. Prophetic dreams', 'D. Prosperity'], ans: 'B' },
+                    { q: '4. What is the closing refrain of the Book of Judges (Judges 21:25)?', opts: ['A. "The Lord is our banner"', 'B. "In those days there was no king in Israel. Everyone did what was right in his own eyes."', 'C. "Be strong and courageous"', 'D. "To obey is better than sacrifice"'], ans: 'B' },
+                    { q: '5. What biblical institution does the closing refrain of Judges build the theological argument for?', opts: ['A. The Levitical priesthood', 'B. A righteous Davidic king', 'C. The Sanhedrin', 'D. Monastic communities'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['Canaanization', 'Davidic', 'downward', 'eyes', 'Shophet', 'Temple'],
+                    items: [
+                        { prompt: '1. Rather than a flat circle, Judges is a ________ spiral of moral and spiritual decline.', ans: 'downward' },
+                        { prompt: '2. Scholars describe Israel’s gradual adoption of pagan values as the ________ of Israel.', ans: 'Canaanization' },
+                        { prompt: '3. God raised up a charismatic military-civil deliverer called a ________.', ans: 'Shophet' },
+                        { prompt: '4. Without a king, everyone did what was right in his own ________.', ans: 'eyes' },
+                        { prompt: '5. The chaos of Judges builds the biblical case for a righteous ________ king.', ans: 'Davidic' }
+                    ]
+                }
+            },
+            {
+                id: 'S11',
+                topic: 'Topic III: Israelites: The Periods of Turbulence',
+                title: 'Section 3: Major Judges and Deliverers (Judges 3–16)',
+                matching: {
+                    items: ['1. Othniel', '2. Ehud', '3. Deborah', '4. Abimelech', '5. Jephthah'],
+                    options: [
+                        { key: 'A', text: 'Left-handed Benjamite who assassinated King Eglon with an 18-inch blade' },
+                        { key: 'B', text: '"Anti-judge" who murdered 70 half-brothers and died by a millstone' },
+                        { key: 'C', text: 'Caleb’s nephew; unblemished gold standard of Spirit-empowered judges' },
+                        { key: 'D', text: 'Gileadite outcast who defeated Ammon and fought Ephraim over "Shibboleth"' },
+                        { key: 'E', text: 'Prophetess and judge who summoned Barak against General Sisera' }
+                    ],
+                    answers: ['C', 'A', 'E', 'B', 'D']
+                },
+                mc: [
+                    { q: '1. How did Ehud bypass King Eglon’s guards when carrying his concealed weapon?', opts: ['A. He hid it in a jar of oil', 'B. Being left-handed, he strapped an 18-inch blade to his right thigh', 'C. He disguised himself as a priest', 'D. He bribed the guards'], ans: 'B' },
+                    { q: '2. How did God defeat General Sisera’s 900 iron chariots during Deborah and Barak’s battle?', opts: ['A. By sending a flash flood that bogged them down in the Kishon River mud', 'B. By striking the horses with blindness', 'C. By an earthquake', 'D. By fire from heaven'], ans: 'A' },
+                    { q: '3. How did Gideon compromise his legacy after routing 135,000 Midianites with 300 men?', opts: ['A. He surrendered to Moab', 'B. He fashioned a golden ephod in Ophrah that became an object of idolatry', 'C. He burned Shiloh', 'D. He married a Philistine'], ans: 'B' },
+                    { q: '4. What tragedy resulted from Jephthah’s rash vow before fighting Ammon?', opts: ['A. He lost the battle', 'B. It cost him his only daughter', 'C. The Ark was captured', 'D. Jericho was rebuilt'], ans: 'B' },
+                    { q: '5. How did blinded Samson achieve his greatest victory over the Philistines?', opts: ['A. By leading an army from Judah', 'B. By pulling down the pillars of Dagon’s temple in Gaza', 'C. By burning their crops again', 'D. By capturing Ashdod'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['Dagon', 'ephod', 'Jael', 'millstone', 'Othniel', 'Shibboleth'],
+                    items: [
+                        { prompt: '1. ________, Caleb’s nephew, represents the unblemished gold standard of judges.', ans: 'Othniel' },
+                        { prompt: '2. After Sisera’s chariots bogged down in mud, ________ killed him with a tent peg.', ans: 'Jael' },
+                        { prompt: '3. Gideon made a golden ________ in Ophrah that ensnared Israel in idolatry.', ans: 'ephod' },
+                        { prompt: '4. A woman dropped an upper ________ on Abimelech’s skull at Thebez.', ans: 'millstone' },
+                        { prompt: '5. Jephthah’s men tested fleeing Ephraimites using the password ________, while Samson collapsed the temple of ________.', ans: 'Shibboleth' }
+                    ]
+                }
+            },
+            {
+                id: 'S12',
+                topic: 'Topic III: Israelites: The Periods of Turbulence',
+                title: 'Section 4: Moral Collapse and Tribal Civil War (Judges 17–21)',
+                matching: {
+                    items: ['1. Micah', '2. Jonathan (grandson of Moses)', '3. Tribe of Dan', '4. Gibeah', '5. 600 surviving men'],
+                    options: [
+                        { key: 'A', text: 'Rogue Levite hired as a private idolatrous priest' },
+                        { key: 'B', text: 'Remnant of the tribe of Benjamin left after the intertribal civil war' },
+                        { key: 'C', text: 'Ephraimite who cast a silver idol and built a private shrine' },
+                        { key: 'D', text: 'Benjamite town that replicated the sin of Sodom against a Levite’s concubine' },
+                        { key: 'E', text: 'Stole Micah’s idols to establish an unauthorized sanctuary at Laish' }
+                    ],
+                    answers: ['C', 'A', 'E', 'D', 'B']
+                },
+                mc: [
+                    { q: '1. What do Judges 17–18 (Micah and the Danites) primarily illustrate about Israel?', opts: ['A. Military expansion', 'B. Total spiritual and religious corruption', 'C. Faithful Levitical teaching', 'D. Covenant renewal'], ans: 'B' },
+                    { q: '2. Whose grandson served as a rogue Levite priest for Micah and later for the tribe of Dan?', opts: ['A. Aaron’s grandson', 'B. Moses’ grandson', 'C. Joshua’s grandson', 'D. Caleb’s grandson'], ans: 'B' },
+                    { q: '3. Where did the tribe of Dan set up their unauthorized rival sanctuary?', opts: ['A. Hebron', 'B. Laish/Dan in the far north', 'C. Beersheba', 'D. Jericho'], ans: 'B' },
+                    { q: '4. Which ancient city’s sin did the Benjamite men of Gibeah replicate against a Levite’s concubine?', opts: ['A. Jericho', 'B. Sodom', 'C. Nineveh', 'D. Babylon'], ans: 'B' },
+                    { q: '5. What happened when the tribe of Benjamin refused to surrender the wicked men of Gibeah?', opts: ['A. The other tribes ignored it', 'B. The eleven tribes waged civil war, reducing Benjamin to 600 men', 'C. Benjamin conquered Judah', 'D. Samuel intervened'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['600', 'concubine', 'Dan', 'Gibeah', 'Moses', 'Sodom'],
+                    items: [
+                        { prompt: '1. Micah hired Jonathan, the grandson of ________, as his private priest.', ans: 'Moses' },
+                        { prompt: '2. The tribe of ________ stole Micah’s idols and set up an unauthorized sanctuary at Laish.', ans: 'Dan' },
+                        { prompt: '3. Benjamite men of ________ committed an atrocity against a Levite’s ________.', ans: 'Gibeah' },
+                        { prompt: '4. The wickedness at Gibeah replicated the sin of ________ (Genesis 19).', ans: 'Sodom' },
+                        { prompt: '5. Intertribal civil war nearly wiped out Benjamin, leaving only ________ surviving men.', ans: '600' }
+                    ]
+                }
+            },
+            {
+                id: 'S13',
+                topic: 'Topic III: Israelites: The Periods of Turbulence',
+                title: 'Section 5: Transition Through the Prophetic Ministry of Samuel (1 Samuel 1–7)',
+                matching: {
+                    items: ['1. Hannah', '2. Hophni and Phinehas', '3. Aphek', '4. Mizpah', '5. Ebenezer'],
+                    options: [
+                        { key: 'A', text: 'Eli’s corrupt sons who defiled sacrifices at Shiloh' },
+                        { key: 'B', text: 'Memorial stone meaning "Till now the Lord has helped us"' },
+                        { key: 'C', text: 'Mother of Samuel who prayed tearfully at Shiloh' },
+                        { key: 'D', text: 'Site where Samuel led national repentance and God thundered against Philistia' },
+                        { key: 'E', text: 'Battlefield where the Philistines captured the Ark of the Covenant' }
+                    ],
+                    answers: ['C', 'A', 'E', 'D', 'B']
+                },
+                mc: [
+                    { q: '1. Why did God allow the Philistines to capture the Ark of the Covenant at Aphek?', opts: ['A. Samuel forgot to pray', 'B. Eli’s sons defiled the sacrifices and Israel treated the Ark like a magical good-luck charm', 'C. The Ark was poorly built', 'D. Judah refused to fight'], ans: 'B' },
+                    { q: '2. What happened to Israel’s central worship site at Shiloh after the capture of the Ark?', opts: ['A. It was expanded', 'B. It was destroyed', 'C. It became the capital', 'D. It was given to Dan'], ans: 'B' },
+                    { q: '3. What dual office did Samuel hold in Israel’s transitional history?', opts: ['A. King and High Priest', 'B. Last judge and first major prophet', 'C. General and scribe', 'D. King and merchant'], ans: 'B' },
+                    { q: '4. How did God defeat the attacking Philistines when Israel repented at Mizpah?', opts: ['A. With hailstones', 'B. By thundering with a mighty sound that threw the Philistines into confusion', 'C. By flooding the Jordan', 'D. With hornets'], ans: 'B' },
+                    { q: '5. What does the name of Samuel’s memorial stone "Ebenezer" mean?', opts: ['A. "The Lord is peace"', 'B. "Till now the Lord has helped us"', 'C. "Yahweh is salvation"', 'D. "House of Bread"'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['Aphek', 'charm', 'Ebenezer', 'Mizpah', 'righteousness', 'Shiloh'],
+                    items: [
+                        { prompt: '1. Israel treated the Ark like a magical good-luck ________ against the Philistines at ________.', ans: 'charm' },
+                        { prompt: '2. Following the loss of the Ark, the Tabernacle center at ________ was destroyed.', ans: 'Shiloh' },
+                        { prompt: '3. God’s judgment proved He will not be manipulated by ritual without ________.', ans: 'righteousness' },
+                        { prompt: '4. Samuel led a 20-year spiritual revival culminating in national repentance at ________.', ans: 'Mizpah' },
+                        { prompt: '5. Samuel erected a memorial stone named ________ ("Till now the Lord has helped us").', ans: 'Ebenezer' }
+                    ]
+                }
+            },
+            {
+                id: 'S14',
+                topic: 'Topic IV: The Call to Greater Promises (Samuel Anoints David)',
+                title: 'Section 1: Israel’s Demand for a King & Rise and Fall of Saul (1 Samuel 8–15)',
+                matching: {
+                    items: ['1. Joel and Abijah', '2. Nahash', '3. Jabesh-gilead', '4. Gilgal', '5. King Agag'],
+                    options: [
+                        { key: 'A', text: 'Ammonite king who threatened to gouge out the right eyes of Israelite citizens' },
+                        { key: 'B', text: 'Site where Saul panicked and unlawfully offered the burnt sacrifice himself' },
+                        { key: 'C', text: 'Samuel’s corrupt sons whose bribery prompted elders to demand a king' },
+                        { key: 'D', text: 'Amalekite king whom Saul spared in direct disobedience to God' },
+                        { key: 'E', text: 'City rescued by Saul in his finest early military victory' }
+                    ],
+                    answers: ['C', 'A', 'E', 'B', 'D']
+                },
+                mc: [
+                    { q: '1. Why was Israel’s demand for a king "like all the nations" sinful in 1 Samuel 8?', opts: ['A. Kingship was forbidden forever', 'B. It was rooted in unbelief, rejecting Yahweh from reigning over them', 'C. Saul was from Judah', 'D. Samuel wanted to be king'], ans: 'B' },
+                    { q: '2. Which tribe did King Saul belong to?', opts: ['A. Judah', 'B. Ephraim', 'C. Benjamin', 'D. Levi'], ans: 'C' },
+                    { q: '3. What unlawful act did Saul commit at Gilgal while waiting for Samuel?', opts: ['A. He worshiped Baal', 'B. He usurped the priestly role and offered the burnt sacrifice himself', 'C. He fled to Egypt', 'D. He executed Jonathan'], ans: 'B' },
+                    { q: '4. How did Saul disobey God’s command regarding the Amalekites in 1 Samuel 15?', opts: ['A. He refused to march', 'B. He spared King Agag and the best livestock, rationalizing it as sacrifice', 'C. He allied with Amalek', 'D. He burned the Ark'], ans: 'B' },
+                    { q: '5. What timeless rebuke did Samuel deliver to Saul after the Amalekite disobedience?', opts: ['A. "Choose this day whom you will serve"', 'B. "To obey is better than sacrifice"', 'C. "The Lord looks on the heart"', 'D. "Be strong and courageous"'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['Agag', 'Benjamin', 'nations', 'obey', 'priestly', 'unbelief'],
+                    items: [
+                        { prompt: '1. Israel demanded a warrior-king "like all the ________" out of ________.', ans: 'nations' },
+                        { prompt: '2. Saul, son of Kish, belonged to the small tribe of ________.', ans: 'Benjamin' },
+                        { prompt: '3. Panicking at Gilgal, Saul unlawfully usurped the ________ office by offering the sacrifice.', ans: 'priestly' },
+                        { prompt: '4. Saul spared the Amalekite king ________ and prime livestock.', ans: 'Agag' },
+                        { prompt: '5. Samuel rebuked Saul: "To ________ is better than sacrifice."', ans: 'obey' }
+                    ]
+                }
+            },
+            {
+                id: 'S15',
+                topic: 'Topic IV: The Call to Greater Promises (Samuel Anoints David)',
+                title: 'Section 2: The Secret Anointing of David at Bethlehem (1 Samuel 16)',
+                matching: {
+                    items: ['1. Bethlehem', '2. Jesse', '3. Eliab', '4. Seven sons', '5. Spirit of the Lord'],
+                    options: [
+                        { key: 'A', text: 'Jesse’s tall firstborn whom Samuel mistakenly assumed was God’s chosen king' },
+                        { key: 'B', text: 'Rushed upon David from the day of his anointing while departing from Saul' },
+                        { key: 'C', text: '"House of Bread," hometown of Jesse and David' },
+                        { key: 'D', text: 'Grandson of Ruth and Boaz, father of David' },
+                        { key: 'E', text: 'Passed over by God, proving birth order does not govern divine election' }
+                    ],
+                    answers: ['C', 'D', 'A', 'E', 'B']
+                },
+                mc: [
+                    { q: '1. Under what cover did Samuel travel to Bethlehem to anoint David?', opts: ['A. A census', 'B. A sacrificial feast, to avoid triggering Saul’s lethal paranoia', 'C. A wedding', 'D. A military draft'], ans: 'B' },
+                    { q: '2. What mistake did Samuel almost make when he saw Jesse’s firstborn son Eliab?', opts: ['A. He thought Eliab was a Philistine', 'B. He judged by tall, regal outward appearance—repeating Israel’s error with Saul', 'C. He anointed him immediately', 'D. He sent him away'], ans: 'B' },
+                    { q: '3. What foundational principle did God speak to Samuel in 1 Samuel 16:7?', opts: ['A. "To obey is better than sacrifice"', 'B. "Man looks on the outward appearance, but the Lord looks on the heart"', 'C. "The battle is the Lord’s"', 'D. "Till now the Lord has helped us"'], ans: 'B' },
+                    { q: '4. Where was David when Samuel arrived at Jesse’s house?', opts: ['A. Fighting Philistines', 'B. Out in the fields tending the sheep', 'C. Serving in Saul’s palace', 'D. Studying at Shiloh'], ans: 'B' },
+                    { q: '5. What happened spiritually the moment Samuel anointed David with oil?', opts: ['A. Fire fell from heaven', 'B. The Spirit of the Lord rushed upon David from that day forward', 'C. Saul died immediately', 'D. Jerusalem surrendered'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['Bethlehem', 'Eliab', 'heart', 'primogeniture', 'sheep', 'Spirit'],
+                    items: [
+                        { prompt: '1. Samuel traveled to ________ ("House of Bread") under the cover of a sacrificial feast.', ans: 'Bethlehem' },
+                        { prompt: '2. Impressed by ________, Samuel was corrected: "Man looks on the outward appearance, but the Lord looks on the ________."', ans: 'Eliab' },
+                        { prompt: '3. Passing over seven older sons proved that human ________ (birth order) does not govern divine election.', ans: 'primogeniture' },
+                        { prompt: '4. Overlooked by his own family, David was summoned from tending ________.', ans: 'sheep' },
+                        { prompt: '5. Upon his anointing, the ________ of the Lord rushed upon David from that day forward.', ans: 'Spirit' }
+                    ]
+                }
+            },
+            {
+                id: 'S16',
+                topic: 'Topic IV: The Call to Greater Promises (Samuel Anoints David)',
+                title: 'Section 3: Emergence of the Anointed King: Giants, Exile, and Crown (1 Sam 17 – 2 Sam 6)',
+                matching: {
+                    items: ['1. Valley of Elah', '2. Jonathan', '3. En-gedi & Hachilah', '4. Hebron', '5. Jerusalem'],
+                    options: [
+                        { key: 'A', text: 'Saul’s heir who surrendered his claim to the throne out of covenant love' },
+                        { key: 'B', text: 'Sites where David twice spared King Saul’s life during his wilderness exile' },
+                        { key: 'C', text: 'Battlefield where David slew Goliath with a sling and stone' },
+                        { key: 'D', text: 'Neutral Jebusite stronghold captured by David to unite all twelve tribes' },
+                        { key: 'E', text: 'City where Judah first anointed David king for 7.5 years' }
+                    ],
+                    answers: ['C', 'A', 'B', 'E', 'D']
+                },
+                mc: [
+                    { q: '1. Why did David refuse King Saul’s heavy bronze armor before facing Goliath?', opts: ['A. It was broken', 'B. He was untested in it and chose to fight with shepherd tools and reliance on the living God', 'C. Goliath forbade armor', 'D. Samuel told him not to'], ans: 'B' },
+                    { q: '2. How many marginalized men gathered to David in the wilderness (starting at the Cave of Adullam)?', opts: ['A. 300 men', 'B. 600 men', 'C. 3,000 men', 'D. 12,000 men'], ans: 'B' },
+                    { q: '3. Why did David refuse to kill Saul when he had the opportunity at En-gedi and Hachilah?', opts: ['A. He lost his sword', 'B. He refused to harm the Lord’s anointed or grasp by sin what God promised by grace', 'C. Saul’s guards woke up', 'D. Jonathan stopped him'], ans: 'B' },
+                    { q: '4. Where did Saul and Jonathan die fighting the Philistines?', opts: ['A. Mount Nebo', 'B. Mount Gilboa', 'C. Mount Ebal', 'D. Mount Tabor'], ans: 'B' },
+                    { q: '5. Why was Jerusalem an ideal capital for uniting all twelve tribes under David?', opts: ['A. It was on the Mediterranean coast', 'B. It was a neutral Jebusite border city between Judah and the northern tribes', 'C. It was already the largest city in Egypt', 'D. Moses had lived there'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['600', 'Ark', 'Elah', 'Gilboa', 'Hebron', 'Jerusalem'],
+                    items: [
+                        { prompt: '1. David defeated the 9-foot-9 Philistine champion Goliath in the Valley of ________.', ans: 'Elah' },
+                        { prompt: '2. During a decade of exile, God shaped David into a compassionate leader of ________ marginalized men.', ans: '600' },
+                        { prompt: '3. Saul and Jonathan died fighting the Philistines on Mount ________.', ans: 'Gilboa' },
+                        { prompt: '4. Judah anointed David king at ________, where he reigned for 7.5 years.', ans: 'Hebron' },
+                        { prompt: '5. David captured ________ and brought the ________ of the Covenant into the city with joyful worship.', ans: 'Jerusalem' }
+                    ]
+                }
+            },
+            {
+                id: 'S17',
+                topic: 'Topic IV: The Call to Greater Promises (Samuel Anoints David)',
+                title: 'Section 4: The Davidic Covenant: The Greater Messianic Promise (2 Samuel 7)',
+                matching: {
+                    items: ['1. Nathan', '2. Bayit ("house")', '3. Solomon', '4. Eternal Throne (2 Sam 7:16)', '5. Jesus of Nazareth'],
+                    options: [
+                        { key: 'A', text: 'David’s royal son who would build the physical Temple in Jerusalem' },
+                        { key: 'B', text: 'Prophet through whom God flipped David’s plan and announced the covenant' },
+                        { key: 'C', text: 'Ultimate "Son of David" whose resurrection inaugurates an unshakeable Kingdom' },
+                        { key: 'D', text: 'Wordplay meaning God would build an eternal dynasty for David' },
+                        { key: 'E', text: 'Unconditional promise that David’s house and kingdom will be established forever' }
+                    ],
+                    answers: ['B', 'D', 'A', 'E', 'C']
+                },
+                mc: [
+                    { q: '1. What prompted King David to propose building a Temple in 2 Samuel 7?', opts: ['A. A command from Saul', 'B. Conviction that he lived in a luxurious cedar palace while the Ark remained in a tent', 'C. A famine in Judah', 'D. Pressure from Hiram of Tyre'], ans: 'B' },
+                    { q: '2. How did God flip David’s proposal through the prophet Nathan?', opts: ['A. God asked for a larger tent', 'B. God declared that David would not build a house for God; God would build an eternal house (dynasty) for David', 'C. God told David to build it in Hebron', 'D. God rejected David like Saul'], ans: 'B' },
+                    { q: '3. How would God deal with David’s royal offspring if they committed iniquity?', opts: ['A. Revoke the covenant permanently like Saul', 'B. Chasten them with the rod of men, yet never withdraw His steadfast love (hesed)', 'C. Destroy Jerusalem immediately', 'D. Transfer the throne to Benjamin'], ans: 'B' },
+                    { q: '4. Even when Jerusalem fell to Babylon in 586 BC, why could the Davidic Covenant not fail?', opts: ['A. Babylon rebuilt the palace', 'B. It rested on God’s unconditional sworn oath (Psalm 89:34–37)', 'C. David was still alive', 'D. The Ark was hidden in Egypt'], ans: 'B' },
+                    { q: '5. How is the Davidic Covenant ultimately fulfilled in the New Testament?', opts: ['A. Through Herod’s temple', 'B. In Jesus of Nazareth, born of David’s lineage, reigning forever as Messiah King', 'C. Through the Roman Senate', 'D. By rebuilding Jericho'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['586 BC', 'bayit', 'forever', 'Jesus', 'Nathan', 'Solomon'],
+                    items: [
+                        { prompt: '1. Through the prophet ________, God promised to build David an eternal dynasty (________).', ans: 'Nathan' },
+                        { prompt: '2. David’s son ________ would build the physical Temple in Jerusalem.', ans: 'Solomon' },
+                        { prompt: '3. God swore to David: "Your throne shall be established ________."', ans: 'forever' },
+                        { prompt: '4. Even after Jerusalem fell to Babylon in ________, God’s covenant oath remained unbreakable.', ans: '586 BC' },
+                        { prompt: '5. The Davidic Covenant finds its ultimate fulfillment in ________ of Nazareth, the eternal Son of David.', ans: 'Jesus' }
+                    ]
+                }
+            }
+        ];
+
+        // =========================================================================
+        // 4. STATE VARIABLES & STORAGE KEYS
+        // =========================================================================
+        const STORAGE_KEYS = {
+            respondent: 'q2wk6_respondent_v1',
+            mastered: 'q2wk6_mastered_fc_v1',
+            formConfig: 'q2wk6_form_cfg_v1'
+        };
+
+        let currentTab = 'outline';
+        let spotlightActive = false;
+        let filteredDeck = [...FLASHCARDS_DATA];
+        let currentCardIdx = 0;
+        let isCardFlipped = false;
+        let hintVisible = false;
+        let masteredSet = new Set();
+        let lastGradedResult = null;
+
+        // =========================================================================
+        // 5. TOP HEADER HOVER/PIN & TAB NAVIGATION
+        // =========================================================================
+        function toggleHeaderPin() {
+            const zone = document.getElementById('top-header-zone');
+            const pinBtn = document.getElementById('btn-pin-header');
+            if (!zone) return;
+            const pinned = zone.classList.toggle('header-pinned');
+            if (pinBtn) {
+                pinBtn.textContent = pinned ? 'Unpin Bar' : 'Pin Bar';
+            }
+        }
+
+        function switchTab(tabName) {
+            currentTab = tabName;
+            const views = ['outline', 'flashcards', 'test'];
+            const labels = {
+                outline: '1. Study Outline',
+                flashcards: '2. Flashcards (92)',
+                test: '3. Unit Test (255 Pts)'
+            };
+
+            views.forEach((v) => {
+                const viewEl = document.getElementById(`view-${v}`);
+                const btnEl = document.getElementById(`tab-${v}`);
+                if (viewEl) {
+                    viewEl.classList.toggle('hidden', v !== tabName);
+                }
+                if (btnEl) {
+                    if (v === tabName) {
+                        btnEl.className = 'tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition bg-amber-500 text-slate-950 shadow';
+                    } else {
+                        btnEl.className = 'tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-800 text-slate-300 hover:bg-slate-700';
+                    }
+                }
+            });
+
+            const pill = document.getElementById('active-tab-pill');
+            const handleLabel = document.getElementById('handle-tab-label');
+            if (pill) pill.textContent = labels[tabName] || '';
+            if (handleLabel) handleLabel.textContent = `Q2Wk6 • ${labels[tabName] || ''}`;
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            if (!toast) return;
+            toast.textContent = message;
+            toast.classList.remove('hidden');
+            clearTimeout(toast._timer);
+            toast._timer = setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3400);
+        }
+
+        function escapeHtml(str) {
+            return String(str ?? '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        // =========================================================================
+        // 6. RESPONDENT IDENTITY PERSISTENCE
+        // =========================================================================
+        function loadRespondentInfo() {
+            const nameEl = document.getElementById('student-name');
+            const emailEl = document.getElementById('student-email');
+            const dateEl = document.getElementById('student-date');
+            const today = new Date().toISOString().split('T')[0];
+
+            try {
+                const saved = JSON.parse(localStorage.getItem(STORAGE_KEYS.respondent) || '{}');
+                if (nameEl && saved.name) nameEl.value = saved.name;
+                if (emailEl && saved.email) emailEl.value = saved.email;
+                if (dateEl) dateEl.value = saved.date || today;
+            } catch (e) {
+                if (dateEl && !dateEl.value) dateEl.value = today;
+            }
+        }
+
+        function saveRespondentInfo() {
+            const name = document.getElementById('student-name')?.value || '';
+            const email = document.getElementById('student-email')?.value || '';
+            const date = document.getElementById('student-date')?.value || new Date().toISOString().split('T')[0];
+            try {
+                localStorage.setItem(STORAGE_KEYS.respondent, JSON.stringify({ name, email, date }));
+            } catch (e) {
+                // Ignore storage quota errors
+            }
+            syncPrefilledButtonHref();
+        }
+
+        // =========================================================================
+        // 7. TAB 1: STUDY OUTLINE RENDERING & SPOTLIGHT MODE
+        // =========================================================================
+        function toggleSpotlightMode() {
+            spotlightActive = !spotlightActive;
+            const container = document.getElementById('outline-container');
+            const btn = document.getElementById('btn-spotlight');
+            if (container) container.classList.toggle('spotlight-mode', spotlightActive);
+            if (btn) {
+                btn.textContent = spotlightActive ? '✨ Spotlight Highlights: ON' : '✨ Spotlight Highlights: OFF';
+                btn.className = spotlightActive
+                    ? 'px-3 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold transition'
+                    : 'px-3 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 font-semibold transition';
+            }
+        }
+
+        function renderOutline() {
+            const container = document.getElementById('outline-container');
+            if (!container) return;
+
+            const query = (document.getElementById('outline-search')?.value || '').trim().toLowerCase();
+            const topicFilter = document.getElementById('outline-topic-filter')?.value || 'ALL';
+
+            const filtered = OUTLINE_DATA.filter((sec) => {
+                if (topicFilter !== 'ALL' && sec.topic !== topicFilter) return false;
+                if (!query) return true;
+                const haystack = `${sec.topicTitle} ${sec.title} ${sec.figures} ${sec.places} ${sec.bullets.join(' ')}`
+                    .replace(/<[^>]+>/g, ' ')
+                    .toLowerCase();
+                return haystack.includes(query);
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 text-center text-sm text-slate-400">No outline sections match "<strong class="text-slate-200">${escapeHtml(query)}</strong>".</div>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map((sec) => `
+                <details open class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-lg">
+                    <summary class="cursor-pointer list-none px-5 py-4 bg-slate-900/90 hover:bg-slate-800/60 flex items-center justify-between gap-3 transition">
+                        <div>
+                            <span class="block text-[11px] font-bold uppercase tracking-wider text-amber-400">${escapeHtml(sec.topicTitle)}</span>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-100 mt-0.5">${escapeHtml(sec.title)}</h3>
+                        </div>
+                        <span class="text-slate-400 group-open:rotate-180 transition-transform text-sm">&#9662;</span>
+                    </summary>
+                    <div class="study-content px-5 pb-5 pt-2 border-t border-slate-800/80 space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs bg-slate-950/80 border border-slate-800 rounded-xl p-3.5">
+                            <div>
+                                <span class="font-bold uppercase tracking-wider text-amber-400 block mb-1">Key Figures</span>
+                                <p class="text-slate-300 leading-relaxed">${escapeHtml(sec.figures)}</p>
+                            </div>
+                            <div>
+                                <span class="font-bold uppercase tracking-wider text-blue-400 block mb-1">Key Places</span>
+                                <p class="text-slate-300 leading-relaxed">${escapeHtml(sec.places)}</p>
+                            </div>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-slate-300 leading-relaxed list-disc pl-5">
+                            ${sec.bullets.map((b) => `<li>${b}</li>`).join('')}
+                        </ul>
+                    </div>
+                </details>
+            `).join('');
+        }
+
+        // =========================================================================
+        // 8. TAB 2: 92 INTERACTIVE FLASHCARDS
+        // =========================================================================
+        function loadMasteredState() {
+            try {
+                const arr = JSON.parse(localStorage.getItem(STORAGE_KEYS.mastered) || '[]');
+                masteredSet = new Set(arr);
+            } catch (e) {
+                masteredSet = new Set();
+            }
+        }
+
+        function saveMasteredState() {
+            try {
+                localStorage.setItem(STORAGE_KEYS.mastered, JSON.stringify([...masteredSet]));
+            } catch (e) {
+                // Ignore storage errors
+            }
+        }
+
+        function filterFlashcards() {
+            const filter = document.getElementById('fc-topic-filter')?.value || 'ALL';
+            if (filter === 'ALL') {
+                filteredDeck = [...FLASHCARDS_DATA];
+            } else if (filter === 'UNMASTERED') {
+                filteredDeck = FLASHCARDS_DATA.filter((c) => !masteredSet.has(c.front));
+                if (filteredDeck.length === 0) {
+                    showToast('All 92 cards are mastered! Showing full deck.');
+                    filteredDeck = [...FLASHCARDS_DATA];
+                    document.getElementById('fc-topic-filter').value = 'ALL';
+                }
+            } else {
+                filteredDeck = FLASHCARDS_DATA.filter((c) => c.topic === filter);
+            }
+            currentCardIdx = 0;
+            isCardFlipped = false;
+            hintVisible = false;
+            renderFlashcard();
+        }
+
+        function shuffleFlashcards() {
+            for (let i = filteredDeck.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [filteredDeck[i], filteredDeck[j]] = [filteredDeck[j], filteredDeck[i]];
+            }
+            currentCardIdx = 0;
+            isCardFlipped = false;
+            hintVisible = false;
+            renderFlashcard();
+            showToast('Deck shuffled!');
+        }
+
+        function renderFlashcard() {
+            if (!filteredDeck.length) return;
+            const card = filteredDeck[currentCardIdx];
+            const inner = document.getElementById('fc-card-inner');
+            const frontEl = document.getElementById('fc-front-text');
+            const backEl = document.getElementById('fc-back-text');
+            const hintEl = document.getElementById('fc-hint-text');
+            const badgeEl = document.getElementById('fc-topic-badge');
+            const statusEl = document.getElementById('fc-status-badge');
+            const counterEl = document.getElementById('fc-counter');
+            const masteredCountEl = document.getElementById('fc-mastered-count');
+            const progressEl = document.getElementById('fc-progress-bar');
+            const masterBtn = document.getElementById('btn-master-card');
+
+            if (inner) inner.classList.toggle('rotate-y-180', isCardFlipped);
+            if (frontEl) frontEl.textContent = card.front;
+            if (backEl) backEl.textContent = card.back;
+            if (hintEl) {
+                hintEl.textContent = `Hint: ${card.hint}`;
+                hintEl.classList.toggle('hidden', !hintVisible);
+            }
+            if (badgeEl) badgeEl.textContent = `Topic ${card.topic}`;
+
+            const isMastered = masteredSet.has(card.front);
+            if (statusEl) {
+                statusEl.textContent = isMastered ? 'Mastered ✓' : 'Front • Prompt';
+                statusEl.className = isMastered ? 'text-xs font-bold text-emerald-400' : 'text-xs font-semibold text-slate-400';
+            }
+            if (masterBtn) {
+                masterBtn.textContent = isMastered ? 'Unmark Mastered' : 'Mark Mastered';
+            }
+            if (counterEl) {
+                counterEl.textContent = `Card ${currentCardIdx + 1} of ${filteredDeck.length}`;
+            }
+            if (masteredCountEl) {
+                masteredCountEl.textContent = `Mastered: ${masteredSet.size} / ${FLASHCARDS_DATA.length}`;
+            }
+            if (progressEl) {
+                const pct = Math.round(((currentCardIdx + 1) / filteredDeck.length) * 100);
+                progressEl.style.width = `${pct}%`;
+            }
+        }
+
+        function flipFlashcard() {
+            isCardFlipped = !isCardFlipped;
+            renderFlashcard();
+        }
+
+        function toggleFlashcardHint() {
+            hintVisible = !hintVisible;
+            renderFlashcard();
+        }
+
+        function nextFlashcard() {
+            if (!filteredDeck.length) return;
+            currentCardIdx = (currentCardIdx + 1) % filteredDeck.length;
+            isCardFlipped = false;
+            hintVisible = false;
+            renderFlashcard();
+        }
+
+        function prevFlashcard() {
+            if (!filteredDeck.length) return;
+            currentCardIdx = (currentCardIdx - 1 + filteredDeck.length) % filteredDeck.length;
+            isCardFlipped = false;
+            hintVisible = false;
+            renderFlashcard();
+        }
+
+        function toggleMasteredCurrent() {
+            if (!filteredDeck.length) return;
+            const card = filteredDeck[currentCardIdx];
+            if (masteredSet.has(card.front)) {
+                masteredSet.delete(card.front);
+            } else {
+                masteredSet.add(card.front);
+            }
+            saveMasteredState();
+            renderFlashcard();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (currentTab !== 'flashcards') return;
+            const tag = (e.target?.tagName || '').toLowerCase();
+            if (tag === 'input' || tag === 'select' || tag === 'textarea') return;
+            if (e.code === 'Space') {
+                e.preventDefault();
+                flipFlashcard();
+            } else if (e.code === 'ArrowRight') {
+                nextFlashcard();
+            } else if (e.code === 'ArrowLeft') {
+                prevFlashcard();
+            }
+        });
+
+        // =========================================================================
+        // 9. TAB 3: 255-POINT AUTO-GRADED UNIT TEST & GOOGLE FORM SUBMISSION
+        // =========================================================================
+        function renderUnitTest() {
+            const container = document.getElementById('test-sections-container');
+            if (!container) return;
+
+            container.innerHTML = TEST_SECTIONS.map((sec, sIdx) => {
+                const matchHtml = sec.matching.items.map((itemText, i) => `
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 rounded-xl bg-slate-950/80 border border-slate-800">
+                        <span class="text-xs sm:text-sm font-semibold text-slate-200 sm:w-2/5">${escapeHtml(itemText)}</span>
+                        <div class="sm:w-3/5 flex flex-col gap-1">
+                            <select id="${sec.id}-m-${i}" onchange="onTestAnswerChange()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
+                                <option value="">-- Select Matching Description --</option>
+                                ${sec.matching.options.map((opt) => `<option value="${opt.key}">${escapeHtml(opt.key + '. ' + opt.text)}</option>`).join('')}
+                            </select>
+                            <span id="${sec.id}-m-fb-${i}" class="hidden text-[11px] font-semibold"></span>
+                        </div>
+                    </div>
+                `).join('');
+
+                const mcHtml = sec.mc.map((qObj, i) => `
+                    <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
+                        <p class="text-xs sm:text-sm font-semibold text-slate-100">${escapeHtml(qObj.q)}</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            ${qObj.opts.map((optStr) => {
+                                const letter = optStr.charAt(0);
+                                return `
+                                    <label class="flex items-start gap-2 p-2 rounded-lg bg-slate-900/90 hover:bg-slate-800 border border-slate-800 cursor-pointer text-xs text-slate-300">
+                                        <input type="radio" name="${sec.id}-mc-${i}" value="${letter}" onchange="onTestAnswerChange()" class="mt-0.5 accent-amber-500" />
+                                        <span>${escapeHtml(optStr)}</span>
+                                    </label>
+                                `;
+                            }).join('')}
+                        </div>
+                        <p id="${sec.id}-mc-fb-${i}" class="hidden text-[11px] font-semibold"></p>
+                    </div>
+                `).join('');
+
+                const fibHtml = sec.fib.items.map((fObj, i) => `
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 rounded-xl bg-slate-950/80 border border-slate-800">
+                        <span class="text-xs sm:text-sm text-slate-200 sm:w-2/3">${escapeHtml(fObj.prompt)}</span>
+                        <div class="sm:w-1/3 flex flex-col gap-1">
+                            <select id="${sec.id}-fib-${i}" onchange="onTestAnswerChange()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
+                                <option value="">-- Choose from Word Bank --</option>
+                                ${sec.fib.wordBank.map((w) => `<option value="${escapeHtml(w)}">${escapeHtml(w)}</option>`).join('')}
+                            </select>
+                            <span id="${sec.id}-fib-fb-${i}" class="hidden text-[11px] font-semibold"></span>
+                        </div>
+                    </div>
+                `).join('');
+
+                return `
+                    <section class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 space-y-5 shadow-lg">
+                        <div class="border-b border-slate-800 pb-3 flex flex-wrap items-center justify-between gap-2">
+                            <div>
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-amber-400">${escapeHtml(sec.topic)}</span>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-100">${escapeHtml(sec.title)}</h3>
+                            </div>
+                            <span id="${sec.id}-sec-score" class="text-xs font-bold px-3 py-1 rounded-full bg-slate-950 border border-slate-700 text-slate-400">15 Points</span>
+                        </div>
+
+                        <div class="space-y-2.5">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-amber-300">Part A: Matching (5 Points)</h4>
+                            <div class="space-y-2">${matchHtml}</div>
+                        </div>
+
+                        <div class="space-y-2.5">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-blue-300">Part B: Multiple Choice (5 Points)</h4>
+                            <div class="space-y-2.5">${mcHtml}</div>
+                        </div>
+
+                        <div class="space-y-2.5">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-300">Part C: Fill-in-the-Blank (5 Points)</h4>
+                                <span class="text-[11px] text-slate-400">Word Bank: <strong class="text-slate-200">${escapeHtml(sec.fib.wordBank.join(' | '))}</strong></span>
+                            </div>
+                            <div class="space-y-2">${fibHtml}</div>
+                        </div>
+                    </section>
+                `;
+            }).join('');
+        }
+
+        function updateTestProgress() {
+            let answered = 0;
+            TEST_SECTIONS.forEach((sec) => {
+                for (let i = 0; i < 5; i++) {
+                    if (document.getElementById(`${sec.id}-m-${i}`)?.value) answered++;
+                    if (document.querySelector(`input[name="${sec.id}-mc-${i}"]:checked`)) answered++;
+                    if (document.getElementById(`${sec.id}-fib-${i}`)?.value) answered++;
+                }
+            });
+            const progEl = document.getElementById('test-progress-text');
+            if (progEl) progEl.textContent = `Answered: ${answered} / 255 items`;
+            return answered;
+        }
+
+        function onTestAnswerChange() {
+            updateTestProgress();
+            syncPrefilledButtonHref();
+        }
+
+        function gradeAllQuestions() {
+            let totalScore = 0;
+            const topicScores = { I: 0, II: 0, III: 0, IV: 0 };
+            const topicTotals = { I: 60, II: 60, III: 75, IV: 60 };
+            const sectionSummaries = [];
+
+            TEST_SECTIONS.forEach((sec) => {
+                let secScore = 0;
+                const topicKey = sec.topic.includes('Topic IV') ? 'IV' : sec.topic.includes('Topic III') ? 'III' : sec.topic.includes('Topic II') ? 'II' : 'I';
+
+                // Part A: Matching
+                sec.matching.answers.forEach((correctKey, i) => {
+                    const sel = document.getElementById(`${sec.id}-m-${i}`);
+                    const fb = document.getElementById(`${sec.id}-m-fb-${i}`);
+                    const val = sel?.value || '';
+                    if (val === correctKey) {
+                        secScore++;
+                        if (fb) {
+                            fb.textContent = '✓ Correct';
+                            fb.className = 'text-[11px] font-semibold text-emerald-400';
+                        }
+                    } else if (fb) {
+                        fb.textContent = `✗ Correct answer: ${correctKey}`;
+                        fb.className = 'text-[11px] font-semibold text-rose-400';
+                    }
+                });
+
+                // Part B: Multiple Choice
+                sec.mc.forEach((qObj, i) => {
+                    const checked = document.querySelector(`input[name="${sec.id}-mc-${i}"]:checked`);
+                    const fb = document.getElementById(`${sec.id}-mc-fb-${i}`);
+                    const val = checked?.value || '';
+                    if (val === qObj.ans) {
+                        secScore++;
+                        if (fb) {
+                            fb.textContent = '✓ Correct';
+                            fb.className = 'text-[11px] font-semibold text-emerald-400';
+                        }
+                    } else if (fb) {
+                        fb.textContent = `✗ Correct answer: ${qObj.ans}`;
+                        fb.className = 'text-[11px] font-semibold text-rose-400';
+                    }
+                });
+
+                // Part C: Fill-in-the-Blank
+                sec.fib.items.forEach((fObj, i) => {
+                    const sel = document.getElementById(`${sec.id}-fib-${i}`);
+                    const fb = document.getElementById(`${sec.id}-fib-fb-${i}`);
+                    const val = sel?.value || '';
+                    if (val.toLowerCase() === fObj.ans.toLowerCase()) {
+                        secScore++;
+                        if (fb) {
+                            fb.textContent = '✓ Correct';
+                            fb.className = 'text-[11px] font-semibold text-emerald-400';
+                        }
+                    } else if (fb) {
+                        fb.textContent = `✗ Correct answer: ${fObj.ans}`;
+                        fb.className = 'text-[11px] font-semibold text-rose-400';
+                    }
+                });
+
+                totalScore += secScore;
+                topicScores[topicKey] += secScore;
+                sectionSummaries.push(`${sec.id}: ${secScore}/15`);
+
+                const secBadge = document.getElementById(`${sec.id}-sec-score`);
+                if (secBadge) {
+                    secBadge.textContent = `Score: ${secScore} / 15`;
+                    secBadge.className = 'text-xs font-bold px-3 py-1 rounded-full bg-emerald-950 border border-emerald-500/40 text-emerald-300';
+                }
+            });
+
+            const pct = Math.round((totalScore / 255) * 100);
+            lastGradedResult = { totalScore, pct, topicScores, topicTotals, sectionSummaries };
+
+            const summaryBox = document.getElementById('score-summary-box');
+            const badge = document.getElementById('final-score-badge');
+            const breakdown = document.getElementById('topic-breakdown-text');
+
+            if (summaryBox) summaryBox.classList.remove('hidden');
+            if (badge) badge.textContent = `${totalScore} / 255 (${pct}%)`;
+            if (breakdown) {
+                breakdown.textContent = `Topic I (Joshua 1–5): ${topicScores.I}/${topicTotals.I} • Topic II (Joshua 6–24): ${topicScores.II}/${topicTotals.II} • Topic III (Judges–1 Sam 7): ${topicScores.III}/${topicTotals.III} • Topic IV (Davidic Covenant): ${topicScores.IV}/${topicTotals.IV}`;
+            }
+
+            syncPrefilledButtonHref();
+            showToast(`Test graded! Score: ${totalScore} / 255 (${pct}%)`);
+            summaryBox?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function resetUnitTest() {
+            TEST_SECTIONS.forEach((sec) => {
+                for (let i = 0; i < 5; i++) {
+                    const mSel = document.getElementById(`${sec.id}-m-${i}`);
+                    const mFb = document.getElementById(`${sec.id}-m-fb-${i}`);
+                    if (mSel) mSel.value = '';
+                    if (mFb) mFb.className = 'hidden';
+
+                    document.querySelectorAll(`input[name="${sec.id}-mc-${i}"]`).forEach((r) => { r.checked = false; });
+                    const mcFb = document.getElementById(`${sec.id}-mc-fb-${i}`);
+                    if (mcFb) mcFb.className = 'hidden';
+
+                    const fSel = document.getElementById(`${sec.id}-fib-${i}`);
+                    const fFb = document.getElementById(`${sec.id}-fib-fb-${i}`);
+                    if (fSel) fSel.value = '';
+                    if (fFb) fFb.className = 'hidden';
+                }
+                const secBadge = document.getElementById(`${sec.id}-sec-score`);
+                if (secBadge) {
+                    secBadge.textContent = '15 Points';
+                    secBadge.className = 'text-xs font-bold px-3 py-1 rounded-full bg-slate-950 border border-slate-700 text-slate-400';
+                }
+            });
+
+            lastGradedResult = null;
+            document.getElementById('score-summary-box')?.classList.add('hidden');
+            document.getElementById('submit-status-box')?.classList.add('hidden');
+            updateTestProgress();
+            syncPrefilledButtonHref();
+            showToast('All test answers cleared.');
+        }
+
+        // =========================================================================
+        // 10. GOOGLE FORM CONFIGURATION & PRE-FILLED SUBMISSION
+        // =========================================================================
+        function getActiveFormConfig() {
+            try {
+                const saved = JSON.parse(localStorage.getItem(STORAGE_KEYS.formConfig) || '{}');
+                return { ...DEFAULT_FORM_CONFIG, ...saved };
+            } catch (e) {
+                return { ...DEFAULT_FORM_CONFIG };
+            }
+        }
+
+        function loadFormConfig() {
+            const cfg = getActiveFormConfig();
+            const urlEl = document.getElementById('cfg-form-url');
+            const nameEl = document.getElementById('cfg-entry-name');
+            const emailEl = document.getElementById('cfg-entry-email');
+            const dateEl = document.getElementById('cfg-entry-date');
+            const scoreEl = document.getElementById('cfg-entry-score');
+            const detailsEl = document.getElementById('cfg-entry-details');
+
+            if (urlEl) urlEl.value = cfg.viewformUrl || cfg.url || DEFAULT_FORM_CONFIG.viewformUrl;
+            if (nameEl) nameEl.value = cfg.name || DEFAULT_FORM_CONFIG.name;
+            if (emailEl) emailEl.value = cfg.email || DEFAULT_FORM_CONFIG.email;
+            if (dateEl) dateEl.value = cfg.date || DEFAULT_FORM_CONFIG.date;
+            if (scoreEl) scoreEl.value = cfg.score || DEFAULT_FORM_CONFIG.score;
+            if (detailsEl) detailsEl.value = cfg.details || DEFAULT_FORM_CONFIG.details;
+        }
+
+        function saveFormConfig() {
+            const rawUrl = (document.getElementById('cfg-form-url')?.value || DEFAULT_FORM_CONFIG.viewformUrl).trim();
+            const viewformUrl = rawUrl.includes('/formResponse') ? rawUrl.replace('/formResponse', '/viewform') : rawUrl;
+            const cfg = {
+                url: viewformUrl,
+                viewformUrl: viewformUrl,
+                name: (document.getElementById('cfg-entry-name')?.value || DEFAULT_FORM_CONFIG.name).trim(),
+                email: (document.getElementById('cfg-entry-email')?.value || DEFAULT_FORM_CONFIG.email).trim(),
+                date: (document.getElementById('cfg-entry-date')?.value || DEFAULT_FORM_CONFIG.date).trim(),
+                score: (document.getElementById('cfg-entry-score')?.value || DEFAULT_FORM_CONFIG.score).trim(),
+                details: (document.getElementById('cfg-entry-details')?.value || DEFAULT_FORM_CONFIG.details).trim()
+            };
+            try {
+                localStorage.setItem(STORAGE_KEYS.formConfig, JSON.stringify(cfg));
+            } catch (e) {
+                // Ignore storage errors
+            }
+            syncPrefilledButtonHref();
+            showToast('Google Form settings saved!');
+        }
+
+        function resetFormConfigToDefaults() {
+            try {
+                localStorage.removeItem(STORAGE_KEYS.formConfig);
+            } catch (e) {
+                // Ignore storage errors
+            }
+            loadFormConfig();
+            syncPrefilledButtonHref();
+            showToast('Reset to pre-bound Google Form!');
+        }
+
+        function buildSubmissionPayload() {
+            const cfg = getActiveFormConfig();
+            const studentName = (document.getElementById('student-name')?.value || '').trim();
+            const studentEmail = (document.getElementById('student-email')?.value || '').trim();
+            const submitDate = (document.getElementById('student-date')?.value || new Date().toISOString().split('T')[0]).trim();
+
+            const scoreText = lastGradedResult
+                ? `${lastGradedResult.totalScore} / 255 (${lastGradedResult.pct}%)`
+                : `Ungraded (${updateTestProgress()} / 255 answered)`;
+
+            const detailsText = lastGradedResult
+                ? `Topic I: ${lastGradedResult.topicScores.I}/${lastGradedResult.topicTotals.I} | Topic II: ${lastGradedResult.topicScores.II}/${lastGradedResult.topicTotals.II} | Topic III: ${lastGradedResult.topicScores.III}/${lastGradedResult.topicTotals.III} | Topic IV: ${lastGradedResult.topicScores.IV}/${lastGradedResult.topicTotals.IV} || ${lastGradedResult.sectionSummaries.join(', ')}`
+                : `Answered ${updateTestProgress()} of 255 items on Q2Wk6 Unit Test`;
+
+            return { cfg, studentName, studentEmail, submitDate, scoreText, detailsText };
+        }
+
+        function buildPrefilledFormUrl() {
+            const { cfg, studentName, studentEmail, submitDate, scoreText, detailsText } = buildSubmissionPayload();
+            const baseUrl = (cfg.viewformUrl || cfg.url || DEFAULT_FORM_CONFIG.viewformUrl).trim();
+
+            try {
+                const urlObj = new URL(baseUrl);
+                if (cfg.name && studentName) urlObj.searchParams.set(cfg.name, studentName);
+                if (cfg.email && studentEmail) urlObj.searchParams.set(cfg.email, studentEmail);
+                if (cfg.date && submitDate) urlObj.searchParams.set(cfg.date, submitDate);
+                if (cfg.score) urlObj.searchParams.set(cfg.score, scoreText);
+                if (cfg.details) urlObj.searchParams.set(cfg.details, detailsText);
+                return urlObj.toString();
+            } catch (e) {
+                const sep = baseUrl.includes('?') ? '&' : '?';
+                const params = [];
+                if (cfg.name && studentName) params.push(`${encodeURIComponent(cfg.name)}=${encodeURIComponent(studentName)}`);
+                if (cfg.email && studentEmail) params.push(`${encodeURIComponent(cfg.email)}=${encodeURIComponent(studentEmail)}`);
+                if (cfg.date && submitDate) params.push(`${encodeURIComponent(cfg.date)}=${encodeURIComponent(submitDate)}`);
+                if (cfg.score) params.push(`${encodeURIComponent(cfg.score)}=${encodeURIComponent(scoreText)}`);
+                if (cfg.details) params.push(`${encodeURIComponent(cfg.details)}=${encodeURIComponent(detailsText)}`);
+                return params.length ? `${baseUrl}${sep}${params.join('&')}` : baseUrl;
+            }
+        }
+
+        function syncPrefilledButtonHref() {
+            const btn = document.getElementById('btn-submit-gform');
+            const badge = document.getElementById('test-form-status-badge');
+            const statusText = document.getElementById('test-form-status-text');
+            const studentName = (document.getElementById('student-name')?.value || '').trim();
+            const url = buildPrefilledFormUrl();
+
+            if (btn) btn.href = url;
+
+            if (badge && statusText) {
+                if (!studentName) {
+                    badge.className = 'inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30';
+                    badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> Enter Name Above';
+                    statusText.textContent = 'Hover the top edge to enter your Name, grade your test, and click below to open your pre-filled Google Form link and submit.';
+                } else if (!lastGradedResult) {
+                    badge.className = 'inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-blue-500/15 text-blue-300 border border-blue-500/30';
+                    badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> Ready to Grade';
+                    statusText.textContent = `Student: ${studentName} • Click "Grade My Test" first so your official score is pre-filled in the Google Form.`;
+                } else {
+                    badge.className = 'inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30';
+                    badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Score Ready to Submit';
+                    statusText.textContent = `Ready for ${studentName} (${lastGradedResult.totalScore}/255, ${lastGradedResult.pct}%). Click below to open the pre-filled Google Form and press Submit.`;
+                }
+            }
+        }
+
+        function handleGoogleFormLinkClick(event) {
+            const studentName = (document.getElementById('student-name')?.value || '').trim();
+            const statusBox = document.getElementById('submit-status-box');
+
+            if (!studentName) {
+                if (event) event.preventDefault();
+                const zone = document.getElementById('top-header-zone');
+                if (zone && !zone.classList.contains('header-pinned')) {
+                    toggleHeaderPin();
+                }
+                const nameInput = document.getElementById('student-name');
+                if (nameInput) nameInput.focus();
+
+                if (statusBox) {
+                    statusBox.className = 'mb-3 p-3 rounded-lg text-xs font-medium bg-amber-950/80 border border-amber-500/40 text-amber-200';
+                    statusBox.textContent = 'Please enter your Full Name in the top bar before opening the Google Form.';
+                    statusBox.classList.remove('hidden');
+                }
+                showToast('Please enter your Full Name in the top bar first.');
+                return false;
+            }
+
+            if (!lastGradedResult) {
+                gradeAllQuestions();
+            }
+
+            syncPrefilledButtonHref();
+
+            if (statusBox) {
+                statusBox.className = 'mb-3 p-3 rounded-lg text-xs font-medium bg-emerald-950/80 border border-emerald-500/40 text-emerald-200';
+                statusBox.textContent = `Opened pre-filled Google Form for ${studentName} (${lastGradedResult.totalScore}/255). Be sure to click "Submit" on the Google Form page!`;
+                statusBox.classList.remove('hidden');
+            }
+            return true;
+        }
+
+        function copyPrefilledGoogleFormLink() {
+            if (!lastGradedResult && updateTestProgress() > 0) {
+                gradeAllQuestions();
+            }
+            const url = buildPrefilledFormUrl();
+            const tempInput = document.createElement('textarea');
+            tempInput.value = url;
+            tempInput.style.position = 'fixed';
+            tempInput.style.opacity = '0';
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                showToast('Pre-filled Google Form link copied to clipboard!');
+            } catch (e) {
+                showToast('Unable to copy link automatically.');
+            }
+            document.body.removeChild(tempInput);
+        }
+
+        function testGoogleFormConnection() {
+            saveFormConfig();
+            const url = buildPrefilledFormUrl();
+            window.open(url, '_blank', 'noopener');
+            showToast('Opened pre-filled Google Form in a new tab.');
+        }
+
+        // =========================================================================
+        // 11. STANDALONE GITHUB PAGES HTML EXPORT
+        // =========================================================================
+        function downloadStandaloneHTML() {
+            saveFormConfig();
+            const cfg = getActiveFormConfig();
+            const rawHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+            const serializedDefaults = JSON.stringify(cfg, null, 12);
+            const updatedHtml = rawHtml.replace(
+                /const DEFAULT_FORM_CONFIG = \{[\s\S]*?\};/,
+                `const DEFAULT_FORM_CONFIG = ${serializedDefaults};`
+            );
+
+            const blob = new Blob([updatedHtml], { type: 'text/html;charset=utf-8' });
+            const blobUrl = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = blobUrl;
+            a.download = 'index.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+            showToast('Downloaded standalone index.html for GitHub Pages!');
+        }
+
+        // =========================================================================
+        // 12. INITIALIZE APPLICATION ON PAGE LOAD
+        // =========================================================================
+        window.addEventListener('DOMContentLoaded', () => {
+            loadRespondentInfo();
+            loadFormConfig();
+            loadMasteredState();
+            renderOutline();
+            renderFlashcard();
+            renderUnitTest();
+            updateTestProgress();
+            syncPrefilledButtonHref();
+        });
+    </script>
+</body>
+</html>
